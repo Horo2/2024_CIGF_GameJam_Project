@@ -21,6 +21,7 @@ public class CameraVolume : MonoSingleton<CameraVolume>
             // ªÒ»° Color Grading …Ë÷√
             postProcessVolume.profile.TryGetSettings(out colorGrading);
         }
+        
     }
     private void OnEnable()
     {

@@ -33,7 +33,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void OnDisable()
     {
-        PlayerController.Instance.OnStateSwitching -= OnStateSwitching;
+       PlayerController.Instance.OnStateSwitching -= OnStateSwitching;
     }
     // Update is called once per frame
     void Update()

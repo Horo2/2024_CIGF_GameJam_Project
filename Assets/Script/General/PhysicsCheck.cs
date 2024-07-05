@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PhysicsCheck : MonoBehaviour
+public class PhysicsCheck : MonoSingleton<PhysicsCheck>
 {
     //向量差
     public Vector2 bottomOffset;
