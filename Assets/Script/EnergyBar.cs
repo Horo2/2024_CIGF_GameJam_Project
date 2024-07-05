@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class NewBehaviourScript : MonoBehaviour
 {
@@ -24,24 +25,19 @@ public class NewBehaviourScript : MonoBehaviour
     {
         currentEnergy = fullEnergy;
     }
+    private void OnEnable()
+    {
+        PlayerController.Instance.OnStateSwitching += OnStateSwitching;
+    }
 
+
+    private void OnDisable()
+    {
+        PlayerController.Instance.OnStateSwitching -= OnStateSwitching;
+    }
     // Update is called once per frame
     void Update()
     {
-        //检测是否暂停 - KeyCode Q
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            if (isRun)
-            {
-                isRun = false;
-            }
-            else
-            {
-                isRun = true;
-            }    
-        }
-
-
         //检测能量槽是否降低
         if (isRun)
         {
@@ -79,10 +75,20 @@ public class NewBehaviourScript : MonoBehaviour
         isRun = false;
     }
 
-    
     public void Refill()
     {
         currentEnergy = fullEnergy;
+    }
+    private void OnStateSwitching()
+    {
+        if (isRun)
+        {
+            isRun = false;
+        }
+        else
+        {
+            isRun = true;
+        }
     }
 }
 
