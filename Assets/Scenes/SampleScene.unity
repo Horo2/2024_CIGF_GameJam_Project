@@ -536,7 +536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   physicsCheck: {fileID: 1757193786}
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 1757193782}
   Rb: {fileID: 1757193781}
   inputDirection: {x: 0, y: 0}
   Speed: 3

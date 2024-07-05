@@ -20,6 +20,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     public float jumpForce;
     private int jumpCount = 2;
 
+    private bool doubleJump;
     public UnityAction OnStateSwitching;
     private void Awake(){
         //将新输入系统实例化
@@ -83,14 +84,23 @@ public class PlayerController : MonoSingleton<PlayerController>
     //人物跳跃
     private void Jump(InputAction.CallbackContext context)
     {
-        //如果在检测在地面上
+        // 如果在地面上
         if (physicsCheck.isGround)
-            jumpCount = 2;
-        //给刚体施加一个向上瞬时的力
-        if(jumpCount != 0)
         {
-            Rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
-            jumpCount--;
+            // 重置二段跳状态
+            doubleJump = true;
+            // 给刚体施加一个向上瞬时的力
+            Rb.velocity = Vector2.up * jumpForce;
+            Debug.Log("跳跃");
+        }
+        // 如果不在地面上，但可以二段跳
+        else if (doubleJump)
+        {
+            // 给刚体施加一个向上瞬时的力
+            Rb.velocity = Vector2.up * jumpForce;
+            // 禁用二段跳
+            doubleJump = false;
+            Debug.Log("二段跳跃");
         }
     }
     private void StateSwitching(InputAction.CallbackContext context)
