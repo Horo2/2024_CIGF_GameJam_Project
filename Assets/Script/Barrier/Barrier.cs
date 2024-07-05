@@ -5,19 +5,17 @@ using UnityEngine;
 
 public class Barrier : MonoBehaviour
 {
-    //�ϰ�������ٶ�
+    //障碍物表现速度
     public int speed;
-    //�ϰ���ʵ���ٶ�
+    //障碍物实际速度
     public int actualSpeed;
-    //�ϰ�������
-    public int gravity;
-    //�ϰ����ƶ�����
-    public int horizontalDirection;//����
-    public int verticalDirection;//����
-    //�ƶ�ʱ��
+    //障碍物移动方向
+    public int horizontalDirection;//左右
+    public int verticalDirection;//上下
+    //移动时间
     public int moveTime;
     public int isImpaired;
-    public int impairment=1;
+    public int impairment = 1;
     private Rigidbody2D rb;
     private void Start()
     {
@@ -36,20 +34,20 @@ public class Barrier : MonoBehaviour
 
     private void Update()
     {
-        if(rb!= null)
+        if (rb != null)
         {
-            if(this.horizontalDirection == 0)
+            if (this.horizontalDirection == 0)
             {
-                if(verticalDirection == 1)
+                if (verticalDirection == 1)
                 {
                     this.transform.Translate(Vector3.up * speed * Time.deltaTime);
                     subtraction();
-                }   
+                }
                 else
                 {
                     this.transform.Translate(Vector3.down * speed * Time.deltaTime);
                     subtraction();
-                }        
+                }
             }
             else
             {
@@ -64,15 +62,17 @@ public class Barrier : MonoBehaviour
                     subtraction();
                 }
             }
-            
+
         }
     }
     private void OnStateSwitching()
     {
-        if(speed == 0)
+        if (speed == 0)
         {
             speed = actualSpeed;
-        }else
+            this.impairment = 1;
+        }
+        else
         {
             speed = 0;
             this.impairment = 0;
