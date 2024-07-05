@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 387c1f5e478eb4d2a958120f1455981f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameOverPanel: {fileID: 0}
+  GameOverPanelPrefab: {fileID: 1269862369565200974, guid: c4d99cc06ca114fd1af02f139e1e9406, type: 3}
 --- !u!114 &7728126240573553281
 MonoBehaviour:
   m_ObjectHideFlags: 0
