@@ -41,10 +41,21 @@ public class NewBehaviourScript : MonoBehaviour
             }    
         }
 
+
+        //检测能量槽是否降低
         if (isRun)
         {
             RunDecrease();
         }
+        else
+        {
+            // 检测充能 - 目前用P键
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                Refill();
+            }
+        }
+        //测试功能
         EnergyBarText.text = currentEnergy.ToString("F1");
     }
 
