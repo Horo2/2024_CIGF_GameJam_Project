@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoSingleton<PlayerController>
 {
     
     public PlayerInputController inputControl;
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour
     public float Speed;
     public float jumpForce;
     private int jumpCount = 2;
+
+    public UnityAction OnStateSwitching;
     private void Awake(){
         //将新输入系统实例化
         inputControl = new PlayerInputController();
@@ -41,8 +44,9 @@ public class PlayerController : MonoBehaviour
         inputDirection = inputControl.GamePlay.Move.ReadValue<Vector2>();
         //读取输入系统中是否按下空格进行跳跃
         inputControl.GamePlay.Jump.started+= Jump;
+        //读取输入系统中是否按下Q进行状态切换
+        inputControl.GamePlay.StateSwitching.started += StateSwitching;
 
-         
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -71,10 +75,10 @@ public class PlayerController : MonoBehaviour
         //通过刚体组件来进行人物翻转
         // transform.localScale=new Vector3(faceDir,1,1);
         //通过精灵组件来进行翻转
-        if(faceDir==-1)
-            spriteRenderer.flipX=true;
-        else
-            spriteRenderer.flipX=false;
+        //if(faceDir==-1)
+        //    spriteRenderer.flipX=true;
+        //else
+        //    spriteRenderer.flipX=false;
     }
     //人物跳跃
     private void Jump(InputAction.CallbackContext context)
@@ -89,5 +93,11 @@ public class PlayerController : MonoBehaviour
             jumpCount--;
         }
     }
-    
+    private void StateSwitching(InputAction.CallbackContext context)
+    {
+        if (this.OnStateSwitching != null)
+            this.OnStateSwitching();
+    }
+
+
 }

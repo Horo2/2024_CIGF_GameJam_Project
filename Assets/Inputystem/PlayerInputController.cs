@@ -38,12 +38,21 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
                 },
                 {
                     ""name"": ""Jump"",
-                    ""type"": ""Value"",
+                    ""type"": ""Button"",
                     ""id"": ""6bbd9c36-68d0-43e5-9a3b-c46b55cc3f8d"",
-                    ""expectedControlType"": """",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""StateSwitching"",
+                    ""type"": ""Button"",
+                    ""id"": ""c5524a9d-81dd-41a5-ad06-8d7c1080855f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -187,6 +196,17 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df72a59e-949c-4253-a2b9-0a175db99708"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""StateSwitching"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -776,6 +796,7 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
         m_GamePlay = asset.FindActionMap("GamePlay", throwIfNotFound: true);
         m_GamePlay_Move = m_GamePlay.FindAction("Move", throwIfNotFound: true);
         m_GamePlay_Jump = m_GamePlay.FindAction("Jump", throwIfNotFound: true);
+        m_GamePlay_StateSwitching = m_GamePlay.FindAction("StateSwitching", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -851,12 +872,14 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
     private List<IGamePlayActions> m_GamePlayActionsCallbackInterfaces = new List<IGamePlayActions>();
     private readonly InputAction m_GamePlay_Move;
     private readonly InputAction m_GamePlay_Jump;
+    private readonly InputAction m_GamePlay_StateSwitching;
     public struct GamePlayActions
     {
         private @PlayerInputController m_Wrapper;
         public GamePlayActions(@PlayerInputController wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_GamePlay_Move;
         public InputAction @Jump => m_Wrapper.m_GamePlay_Jump;
+        public InputAction @StateSwitching => m_Wrapper.m_GamePlay_StateSwitching;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -872,6 +895,9 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @StateSwitching.started += instance.OnStateSwitching;
+            @StateSwitching.performed += instance.OnStateSwitching;
+            @StateSwitching.canceled += instance.OnStateSwitching;
         }
 
         private void UnregisterCallbacks(IGamePlayActions instance)
@@ -882,6 +908,9 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @StateSwitching.started -= instance.OnStateSwitching;
+            @StateSwitching.performed -= instance.OnStateSwitching;
+            @StateSwitching.canceled -= instance.OnStateSwitching;
         }
 
         public void RemoveCallbacks(IGamePlayActions instance)
@@ -1066,6 +1095,7 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnStateSwitching(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
