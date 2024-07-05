@@ -14,12 +14,13 @@ public class Barrier : MonoBehaviour
     public int verticalDirection;//上下
     //移动时间
     public int moveTime;
-    public int isImpaired;
-    public int impairment = 1;
+    public float isImpaired;
+    private int impairment = 1;
     private Rigidbody2D rb;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        speed = actualSpeed;
         isImpaired = moveTime;
     }
     private void OnEnable()
@@ -81,10 +82,13 @@ public class Barrier : MonoBehaviour
 
     private void subtraction()
     {
-        isImpaired = (int)(moveTime - impairment * Time.deltaTime);
-        if (isImpaired == 0)
+        isImpaired = isImpaired - impairment*Time.deltaTime;
+        if (isImpaired <= 0)
         {
-            verticalDirection = -1;
+            if (horizontalDirection == 0)
+                verticalDirection = -verticalDirection; 
+            else
+                horizontalDirection = -horizontalDirection;
             isImpaired = moveTime;
         }
     }
