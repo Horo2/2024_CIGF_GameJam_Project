@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class Barrier : MonoBehaviour
 {
-    //ÕÏ°­Îï±íÏÖËÙ¶È
+    //ï¿½Ï°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶ï¿½
     public int speed;
-    //ÕÏ°­ÎïÊµ¼ÊËÙ¶È
+    //ï¿½Ï°ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½Ù¶ï¿½
     public int actualSpeed;
-    //ÕÏ°­ÎïÒÆ¶¯·½Ïò
-    public int horizontalDirection;//×óÓÒ
-    public int verticalDirection;//ÉÏÏÂ
-    //ÒÆ¶¯Ê±¼ä
+    //ï¿½Ï°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public int gravity;
+    //ï¿½Ï°ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½
+    public int horizontalDirection;//ï¿½ï¿½ï¿½ï¿½
+    public int verticalDirection;//ï¿½ï¿½ï¿½ï¿½
+    //ï¿½Æ¶ï¿½Ê±ï¿½ï¿½
     public int moveTime;
     public int isImpaired;
     public int impairment=1;
@@ -70,7 +72,6 @@ public class Barrier : MonoBehaviour
         if(speed == 0)
         {
             speed = actualSpeed;
-            this.impairment = 1;
         }else
         {
             speed = 0;
