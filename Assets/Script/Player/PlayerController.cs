@@ -20,7 +20,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     public float Speed;
     public float jumpForce;
     private int jumpCount = 2;
-
+    public int gravity;
     private bool doubleJump;
     public bool isDisable;
     public UnityAction OnStateSwitching;
@@ -60,21 +60,26 @@ public class PlayerController : MonoSingleton<PlayerController>
         isDisable = !isDisable;
     }
 
-    private void Update(){
+    private void Update()
+    {
         //读取输入系统传来的2维向量值
         inputDirection = inputControl.GamePlay.Move.ReadValue<Vector2>();
         //读取输入系统中是否按下空格进行跳跃
-        inputControl.GamePlay.Jump.started+= Jump;
+        inputControl.GamePlay.Jump.started += Jump;
         //读取输入系统中是否按下Q进行状态切换
         inputControl.GamePlay.StateSwitching.started += StateSwitching;
         if (Input.GetKeyDown(KeyCode.G))
         {
-            if(pv!= null)
+            if (pv != null)
                 pv.gameObject.GetComponent<PressureValves>().highWater.SetWater();
         }
 
-    }
+        if (!physicsCheck.isGround)
+        {
+            Rb.AddForce(Vector3.down * gravity * Time.deltaTime, ForceMode2D.Force);
 
+        }
+    }
     private void OnTriggerStay2D(Collider2D other)
     {
         if(other.gameObject.tag == "PressureValves")
