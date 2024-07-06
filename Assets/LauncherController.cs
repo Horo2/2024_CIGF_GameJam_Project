@@ -17,21 +17,23 @@ public class LauncherController : MonoBehaviour
     {
         if (PlayerController.GetisDisable())
         {
-            if (isFiring)
-            {
-                // 暂停发射
-                StopCoroutine(fireCoroutine);
-                isFiring = false;
-            }
-        }
-        else
-        {
             if (!isFiring)
             {
                 // 恢复发射
                 fireCoroutine = StartCoroutine(FireShells());
                 isFiring = true;
             }
+        }
+        else
+        {
+            Debug.Log("时停中，炮台！！");
+            if (isFiring)
+            {
+                // 暂停发射
+                StopCoroutine(fireCoroutine);
+                isFiring = false;
+            }
+            
         }
     }
 
