@@ -134,6 +134,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         transform.position = newPosition;
         isDisable = true;
+        PlayerPickUp.OnSceneRefresh();
         // 删除 HoldPosition 下的所有子对象（Transform）
         foreach (Transform child in HoldPosition)
         {
