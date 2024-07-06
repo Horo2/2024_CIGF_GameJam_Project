@@ -22,7 +22,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     private int jumpCount = 2;
 
     private bool doubleJump;
-    private bool isDisable;
+    public bool isDisable;
     public UnityAction OnStateSwitching;
     public UnityAction OnUpdateScene;
 
@@ -37,7 +37,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private void Start()
     {
-        isDisable = true;
+        isDisable = false;
         if (this.OnStateSwitching != null)
             this.OnStateSwitching();
     }
@@ -133,6 +133,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     public void UpdatePlayerPosition(Vector3 newPosition)
     {
         transform.position = newPosition;
+        isDisable = true;
         // 删除 HoldPosition 下的所有子对象（Transform）
         foreach (Transform child in HoldPosition)
         {
@@ -151,8 +152,13 @@ public class PlayerController : MonoSingleton<PlayerController>
     private void IsPickUp()
     {
         if(isDisable)
-            this.GetComponent<PlayerPickUp>().enabled = true;
-        else
             this.GetComponent<PlayerPickUp>().enabled = false;
+        else
+            this.GetComponent<PlayerPickUp>().enabled = true;
+    }
+
+    public static bool GetisDisable()
+    {
+        return PlayerController.Instance.isDisable;
     }
 }

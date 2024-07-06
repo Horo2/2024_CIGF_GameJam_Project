@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPickUp : MonoSingleton<PlayerPickUp>
+public class PlayerPickUp : MonoBehaviour
 {
     public Transform holdPosition;
 
@@ -21,6 +21,24 @@ public class PlayerPickUp : MonoSingleton<PlayerPickUp>
             {
                 Debug.Log("放下");
                 DropObject();
+            }
+        }
+
+
+        // 确保物体跟随 holdPosition
+        if (pickedUpObject != null)
+        {
+            // 检测物体的 Rigidbody 是否为 Static
+            Rigidbody2D rb = pickedUpObject.GetComponent<Rigidbody2D>();
+            if (rb != null && rb.bodyType == RigidbodyType2D.Static)
+            {
+                Debug.Log("检测到静态物体，自动解除绑定");
+                DropObject();
+            }
+            else
+            {
+                pickedUpObject.transform.position = holdPosition.position;
+                pickedUpObject.transform.rotation = holdPosition.rotation;
             }
         }
     }
@@ -47,12 +65,11 @@ public class PlayerPickUp : MonoSingleton<PlayerPickUp>
         Rigidbody2D rb = pickedUpObject.GetComponent<Rigidbody2D>();
         rb.isKinematic = true;
 
-        // 重置位置和旋转
-        pickedUpObject.transform.position = holdPosition.position;
-        pickedUpObject.transform.rotation = holdPosition.rotation;
-
         // 设置父级为 holdPosition
         pickedUpObject.transform.SetParent(holdPosition);
+        // 重置位置和旋转
+        pickedUpObject.transform.localPosition = Vector3.zero;
+        pickedUpObject.transform.localRotation = Quaternion.identity;
     }
 
     void DropObject()
