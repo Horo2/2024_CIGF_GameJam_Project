@@ -173,10 +173,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  actualSpeed: 2
-  horizontalDirection: -1
+  actualSpeed: 0
+  horizontalDirection: 0
   verticalDirection: 0
-  moveTime: 3
+  moveTime: 0
   isImpaired: 0
 --- !u!114 &4773437953793419490
 MonoBehaviour:
