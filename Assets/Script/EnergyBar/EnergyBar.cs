@@ -104,8 +104,9 @@ public class EnergyBar : MonoSingleton<EnergyBar>
         currentEnergy = fullEnergy;
     }
 
-    public void AddEnergy()
+    public void AddEnergy(int add)
     {
+        this.addEnergy = add;
         currentEnergy += addEnergy;
     }
 

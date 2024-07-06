@@ -98,7 +98,6 @@ public class PlayerPickUp : MonoBehaviour
     // 抛物线扔出去
     void Throw()
     {
-        
         if (pickedUpObject != null)
         {
             pickedUpObject.transform.SetParent(null);
@@ -114,11 +113,8 @@ public class PlayerPickUp : MonoBehaviour
             rb.AddForce(throwDirection * throwForce, ForceMode2D.Impulse);
 
             pickedUpObject = null;
-            
         }
-
     }
-
 
     // 场景刷新时调用此方法
     public static void OnSceneRefresh()
@@ -129,5 +125,4 @@ public class PlayerPickUp : MonoBehaviour
         }
         pickedUpObjects.Clear();
     }
-
 }

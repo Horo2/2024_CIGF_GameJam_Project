@@ -38,7 +38,7 @@ public class DilapidatedPlatform : MonoBehaviour
     //当时间停止时，有碰撞体积，玩家可以站立在上面。当时间流动时，玩家站立在上面，平台会被破坏，也可以被其他物体触发。
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (    isOpen)
+        if ( isOpen)
         {
             this.gameObject.SetActive(false);
         }
