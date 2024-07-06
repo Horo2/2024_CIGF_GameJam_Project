@@ -48,11 +48,12 @@ public class ConveyorBelt : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        rb = collision.GetComponent<Rigidbody2D>();
         if(rb!= null)
         {
             if (!isOpen)
             {
-                collision.GetComponent<Rigidbody2D>().AddForce(Vector2.right * horizontal * moveSpeed, ForceMode2D.Force);
+                collision.GetComponent<Rigidbody2D>().AddForce(Vector2.left * horizontal * moveSpeed, ForceMode2D.Force);
 
             }
         }

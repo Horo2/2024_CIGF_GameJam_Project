@@ -49,4 +49,11 @@ public class Water : MonoBehaviour
     {
         isOpen = !isOpen;
     }
+    //如果玩家在水里停止时间，则直接死亡。
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (isOpen)
+            PlayerController.Instance.Restrat();
+    }
 }
