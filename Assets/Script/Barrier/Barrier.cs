@@ -13,7 +13,7 @@ public class Barrier : MonoBehaviour
     public int horizontalDirection;//左右
     public int verticalDirection;//上下
     //移动时间
-    public int moveTime;
+    public float moveTime;
     public float isImpaired;
     private int impairment = 1;
     private Rigidbody2D rb;
