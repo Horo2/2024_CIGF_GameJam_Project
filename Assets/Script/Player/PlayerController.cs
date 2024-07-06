@@ -27,6 +27,10 @@ public class PlayerController : MonoSingleton<PlayerController>
     public UnityAction OnUpdateScene;
     public Collider2D pv;
     public Transform HoldPosition;
+
+    public LayerMask wallLayer; // 墙壁层
+    public float wallCheckRadius = 0.1f; // 检测半径
+    public Transform wallCheck; // 用于检测墙壁的发射点
     private void Awake(){
         //将新输入系统实例化
         inputControl = new PlayerInputController();
@@ -79,6 +83,8 @@ public class PlayerController : MonoSingleton<PlayerController>
             Rb.AddForce(Vector3.down * gravity * Time.deltaTime, ForceMode2D.Force);
 
         }
+
+
     }
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -93,6 +99,8 @@ public class PlayerController : MonoSingleton<PlayerController>
         pv = null;
     }
 
+    
+
     void FixedUpdate()
     {
         //检测人物移动
@@ -103,8 +111,15 @@ public class PlayerController : MonoSingleton<PlayerController>
   
     //人物移动
     void Move(){
-        //通过rigidbody组件，来改变人物的线性速度
-        Rb.velocity = new Vector2(inputDirection.x*Speed,Rb.velocity.y);
+        // 检查前方是否有墙壁，从玩家脚下发射圆形检测
+        bool isTouchingWall = Physics2D.OverlapCircle(wallCheck.position, wallCheckRadius, wallLayer);
+
+        // 通过rigidbody组件，来改变人物的线性速度
+        if (!isTouchingWall || physicsCheck.isGround)
+        {
+            Rb.velocity = new Vector2(inputDirection.x * Speed, Rb.velocity.y);
+        }
+
         //定义一个变量来控制人物朝向
         int faceDir ;
         //如果输入为负数朝向左边，反之朝向右边
@@ -141,6 +156,7 @@ public class PlayerController : MonoSingleton<PlayerController>
             doubleJump = false;
             Debug.Log("二段跳跃");
         }
+        
     }
     private void StateSwitching(InputAction.CallbackContext context)
     {
@@ -180,5 +196,12 @@ public class PlayerController : MonoSingleton<PlayerController>
     public static bool GetisDisable()
     {
         return PlayerController.Instance.isDisable;
+    }
+
+    // 可视化检测范围
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(wallCheck.position, wallCheckRadius);
     }
 }
