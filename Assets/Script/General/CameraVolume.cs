@@ -8,10 +8,11 @@ public class CameraVolume : MonoSingleton<CameraVolume>
 {
     private PostProcessVolume postProcessVolume;
     private ColorGrading colorGrading;
-    public bool isOpen=false;
+    public bool isOpen;
 
     private void Start()
     {
+        isOpen = true;
         // 获取摄像机上的 Post-Processing Volume 组件
         postProcessVolume = GetComponent<PostProcessVolume>();
 
@@ -41,7 +42,7 @@ public class CameraVolume : MonoSingleton<CameraVolume>
     {
         if (colorGrading != null)
         {
-            if (isOpen)
+            if (!isOpen)
             {
                 // 设置黑白滤镜效果
                 colorGrading.saturation.value = -100f;
@@ -63,7 +64,7 @@ public class CameraVolume : MonoSingleton<CameraVolume>
 
     private void OnUpdateScene()
     {
-        isOpen = true;
+        isOpen = false;
     }
 
 }

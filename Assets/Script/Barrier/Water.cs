@@ -11,7 +11,7 @@ public class Water : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        isOpen = false;
+        isOpen = true;
         waterCollider = this.GetComponent<BoxCollider2D>();
     }
 
@@ -29,13 +29,13 @@ public class Water : MonoBehaviour
 
     private void OnUpdateScene()
     {
-        isOpen = true;
+        isOpen = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!isOpen)
+        if(isOpen)
         {
             waterCollider.enabled = false;
         }
@@ -53,7 +53,7 @@ public class Water : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (isOpen)
+        if (!isOpen)
             PlayerController.Instance.Restrat();
     }
 }

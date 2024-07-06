@@ -14,7 +14,7 @@ public class ConveyorBelt : MonoBehaviour
     public float moveSpeed;
     void Start()
     {
-        isOpen = false;
+        isOpen = true;
         capsuleCollider = this.GetComponent<CapsuleCollider2D>();
     }
 
@@ -51,7 +51,7 @@ public class ConveyorBelt : MonoBehaviour
         rb = collision.GetComponent<Rigidbody2D>();
         if(rb!= null)
         {
-            if (!isOpen)
+            if (isOpen)
             {
                 collision.GetComponent<Rigidbody2D>().AddForce(Vector2.left * horizontal * moveSpeed, ForceMode2D.Force);
 
