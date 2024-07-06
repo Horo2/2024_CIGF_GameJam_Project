@@ -15,6 +15,10 @@ public class Shells : MonoBehaviour
         _rb.velocity = Vector2.right * sheelsSpeed; // 朝右边飞行
     }
 
+    private void Update()
+    {
+        if()
+    }
     void OnCollisionEnter2D(Collision2D collision)
     {
         // 在碰撞位置生成爆炸特效
