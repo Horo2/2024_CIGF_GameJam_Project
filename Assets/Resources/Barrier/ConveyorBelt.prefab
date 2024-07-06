@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1471354497635224482}
   - component: {fileID: 5278459056586930832}
   - component: {fileID: 7261163274590396200}
-  - component: {fileID: 4338769487230085638}
+  - component: {fileID: 73179526977600840}
   m_Layer: 0
   m_Name: ConveyorBelt
   m_TagString: Untagged
@@ -105,7 +105,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   horizontal: 1
   moveSpeed: 1000
-  anim: {fileID: 0}
+  anim: {fileID: 7261163274590396200}
   frameRate: 0.1
 --- !u!70 &5278459056586930832
 CapsuleCollider2D:
@@ -163,7 +163,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!50 &4338769487230085638
+--- !u!50 &73179526977600840
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0

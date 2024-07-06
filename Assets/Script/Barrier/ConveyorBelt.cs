@@ -53,7 +53,17 @@ public class ConveyorBelt : MonoBehaviour
     // ��ʱ��ֹͣʱ������/���������治���ƶ�����ʱ������ʱ���������������һ�������ƶ���
     void Update()
     {
-        anim.Play("ConveyorBelt");
+        bool isDisabled = PlayerController.GetisDisable();
+        Debug.Log("isDisabled" + isDisabled);
+        if (isDisabled)
+        {
+            
+            anim.SetBool("isDisabled", true);
+        }
+        else
+        {
+            anim.SetBool("isDisabled", false);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
