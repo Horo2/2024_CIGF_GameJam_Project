@@ -20,12 +20,12 @@ public class Water : MonoBehaviour
     {
         if(PlayerController.GetisDisable())
         {
-            waterCollider.enabled = false;
+            waterCollider.enabled = true;
             animator.speed = 0; // »Ö¸´¶¯»­
         }
         else
         {
-            waterCollider.enabled = true;
+            waterCollider.enabled = false;
             animator.speed = 1; // ÔÝÍ£¶¯»­
         }
     }
