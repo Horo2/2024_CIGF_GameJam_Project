@@ -46,8 +46,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         SpawnPoint = SceneLoader.Instance.GetSpawnPointPosition();
         this.transform.position = SpawnPoint;
         pv = null;
-        isDisable = true;
-        faceTo = 1;
+        isDisable = true;;
     }
 
     //启动输入系统
