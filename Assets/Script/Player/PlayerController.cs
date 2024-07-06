@@ -44,8 +44,6 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         pv = null;
         isDisable = true;
-        if (this.OnStateSwitching != null)
-            this.OnStateSwitching();
     }
 
     //启动输入系统
@@ -159,7 +157,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         if (physicsCheck.isGround)
         {
             // 重置二段跳状态
-            doubleJump = true;
+            doubleJump = false;
             
             // 给刚体施加一个向上瞬时的力
             Rb.velocity = Vector2.up * jumpForce;

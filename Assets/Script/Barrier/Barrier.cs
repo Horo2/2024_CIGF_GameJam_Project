@@ -17,25 +17,14 @@ public class Barrier : MonoBehaviour
     public float isImpaired;
     private int impairment = 1;
     private Rigidbody2D rb;
+
+    public bool isDisabled;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        speed = actualSpeed;
-        isImpaired = moveTime;
+        isDisabled = false;
     }
-    private void OnEnable()
-    {
-        PlayerController.Instance.OnStateSwitching += OnStateSwitching;
-        PlayerController.Instance.OnUpdateScene += OnUpdateScene;
-    }
-
-    private void OnDisable()
-    {
-        PlayerController.Instance.OnStateSwitching -= OnStateSwitching;
-        PlayerController.Instance.OnUpdateScene -= OnUpdateScene;
-    }
-
-    
 
     private void Update()
     {
@@ -69,10 +58,12 @@ public class Barrier : MonoBehaviour
             }
 
         }
+        OnStateSwitching();
     }
     private void OnStateSwitching()
     {
-        if (speed == 0)
+        isDisabled = PlayerController.GetisDisable();
+        if (!isDisabled)
         {
             speed = actualSpeed;
             this.impairment = 1;
@@ -83,12 +74,7 @@ public class Barrier : MonoBehaviour
             this.impairment = 0;
         }
     }
-    private void OnUpdateScene()
-    {
-        speed = 0;
-        this.impairment = 0;
-    }
-
+ 
     private void subtraction()
     {
         isImpaired = isImpaired - impairment*Time.deltaTime;
