@@ -281,7 +281,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7827260600739227182}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -29.08, y: -0.34, z: 0}
   m_LocalScale: {x: 0.7872867, y: 0.73560923, z: 1}
   m_ConstrainProportionsScale: 0
@@ -305,5 +305,5 @@ MonoBehaviour:
   global: 1
   bgmSource1: {fileID: 4898746969021635623}
   bgmSource2: {fileID: 5500779664811727066}
-  bgmClip1: {fileID: 8300000, guid: 87a4168cbdb364859a26765ac4c575cc, type: 3}
-  bgmClip2: {fileID: 8300000, guid: 07d710153ab69444ea882c0d2526552a, type: 3}
+  bgmClip1: {fileID: 8300000, guid: 4c89762f484103342b11889b27f6de2f, type: 3}
+  bgmClip2: {fileID: 8300000, guid: a1129a0d28801dd489d05c6f3fd83202, type: 3}
