@@ -5,55 +5,36 @@ using UnityEngine;
 
 public class Water : MonoBehaviour
 {
-    public bool isOpen;
     public BoxCollider2D waterCollider;
     public CapsuleCollider2D waterDieCollider;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
-        isOpen = true;
         waterCollider = this.GetComponent<BoxCollider2D>();
-    }
-
-    private void OnEnable()
-    {
-        PlayerController.Instance.OnStateSwitching += OnStateSwitching;
-        PlayerController.Instance.OnUpdateScene += OnUpdateScene;
-    }
-
-    private void OnDisable()
-    {
-        PlayerController.Instance.OnStateSwitching -= OnStateSwitching;
-        PlayerController.Instance.OnUpdateScene -= OnUpdateScene;
-    }
-
-    private void OnUpdateScene()
-    {
-        isOpen = false;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isOpen)
+        if(PlayerController.GetisDisable())
         {
-            waterCollider.enabled = true;
+            waterCollider.enabled = false;
+            animator.speed = 0; // 恢复动画
         }
         else
         {
-            waterCollider.enabled = false;
+            waterCollider.enabled = true;
+            animator.speed = 1; // 暂停动画
         }
     }
     //当时间停止时，有碰撞体积，玩家无法穿过。当时间流动时，没有碰撞体积，玩家可以穿过。
-    private void OnStateSwitching()
-    {
-        isOpen = !isOpen;
-    }
     //如果玩家在水里停止时间，则直接死亡。
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isOpen)
+        if (!PlayerController.GetisDisable())
             PlayerController.Instance.Restrat();
     }
 }
