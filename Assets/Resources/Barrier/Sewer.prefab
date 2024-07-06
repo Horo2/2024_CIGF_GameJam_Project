@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 2141922124701228986}
   - component: {fileID: 1463026725308956805}
   - component: {fileID: 4503620937191227370}
+  - component: {fileID: 2642261603333966773}
   m_Layer: 3
-  m_Name: water
+  m_Name: Sewer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -17.91, y: -7.5, z: 0}
-  m_LocalScale: {x: 2.0576, y: 5.8711696, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,8 +79,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 0.19047713, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: c4cbfce7bc5b99e458892314a892b443, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -148,18 +149,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.034531116, y: -3.4301777}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.31443986, y: 0.7639077}
+    oldSize: {x: 19.2, y: 10.8}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.4503412, y: 9.609978}
   m_EdgeRadius: 0
 --- !u!114 &2141922124701228986
 MonoBehaviour:
@@ -189,10 +190,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  actualSpeed: 2
+  actualSpeed: 0
   horizontalDirection: 0
-  verticalDirection: 1
-  moveTime: 3
+  verticalDirection: 0
+  moveTime: 0
   isImpaired: 0
 --- !u!70 &4503620937191227370
 CapsuleCollider2D:
@@ -226,6 +227,27 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0038872794, y: -0.0040874756}
-  m_Size: {x: 0.7745109, y: 0.8937254}
+  m_Offset: {x: 0.0066127777, y: -3.7308826}
+  m_Size: {x: 1.971283, y: 8.347317}
   m_Direction: 0
+--- !u!95 &2642261603333966773
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311587157398720495}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7dc2a0f139ca5fa499aa1bbcf123096d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
