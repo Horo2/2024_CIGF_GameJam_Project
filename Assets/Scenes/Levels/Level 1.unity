@@ -2650,6 +2650,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sheelsSpeed: 10
   explosionEffect: {fileID: 7518441064082395078, guid: 6554977a877e0c248a31d38f51c3b208, type: 3}
+  detectionDistance: 0.1
+  offset: {x: 0.5, y: 0}
 --- !u!58 &2013773258
 CircleCollider2D:
   m_ObjectHideFlags: 0
