@@ -86,8 +86,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         }
         else
             anim.SetBool("Jump", false);
-        }
-
+        
 
     }
     private void OnTriggerStay2D(Collider2D other)
@@ -122,7 +121,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     //人物移动
     void Move(){
         //通过rigidbody组件，来改变人物的线性速度
-        Rb.velocity = new Vector2(inputDirection.x*Speed,Rb.velocity.y);
+        //Rb.velocity = new Vector2(inputDirection.x*Speed,Rb.velocity.y);
         
         // 检查前方是否有墙壁，从玩家脚下发射圆形检测
         bool isTouchingWall = Physics2D.OverlapCircle(wallCheck.position, wallCheckRadius, wallLayer);
