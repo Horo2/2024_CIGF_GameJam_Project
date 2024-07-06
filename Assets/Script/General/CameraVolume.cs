@@ -26,14 +26,17 @@ public class CameraVolume : MonoSingleton<CameraVolume>
     private void OnEnable()
     {
         PlayerController.Instance.OnStateSwitching += OnStateSwitching;
+        PlayerController.Instance.OnUpdateScene += OnUpdateScene;
     }
 
     private void OnDisable()
     {
         PlayerController.Instance.OnStateSwitching -= OnStateSwitching;
+        PlayerController.Instance.OnUpdateScene -= OnUpdateScene;
     }
 
     
+
     private void Update()
     {
         if (colorGrading != null)
@@ -56,6 +59,11 @@ public class CameraVolume : MonoSingleton<CameraVolume>
     private void OnStateSwitching()
     {
         isOpen = !isOpen;
+    }
+
+    private void OnUpdateScene()
+    {
+        isOpen = true;
     }
 
 }

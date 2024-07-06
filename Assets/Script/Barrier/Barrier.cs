@@ -26,12 +26,16 @@ public class Barrier : MonoBehaviour
     private void OnEnable()
     {
         PlayerController.Instance.OnStateSwitching += OnStateSwitching;
+        PlayerController.Instance.OnUpdateScene += OnUpdateScene;
     }
 
     private void OnDisable()
     {
         PlayerController.Instance.OnStateSwitching -= OnStateSwitching;
+        PlayerController.Instance.OnUpdateScene -= OnUpdateScene;
     }
+
+    
 
     private void Update()
     {
@@ -78,6 +82,11 @@ public class Barrier : MonoBehaviour
             speed = 0;
             this.impairment = 0;
         }
+    }
+    private void OnUpdateScene()
+    {
+        speed = 0;
+        this.impairment = 0;
     }
 
     private void subtraction()

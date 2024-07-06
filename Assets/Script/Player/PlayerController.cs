@@ -23,12 +23,19 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private bool doubleJump;
     public UnityAction OnStateSwitching;
+    public UnityAction OnUpdateScene;
     private void Awake(){
         //将新输入系统实例化
         inputControl = new PlayerInputController();
         //获取PhysicsCheck中的组件,实例化
         physicsCheck = GetComponent<PhysicsCheck>();
 
+    }
+
+    private void Start()
+    {
+        if (this.OnStateSwitching != null)
+            this.OnStateSwitching();
     }
 
     //启动输入系统
@@ -114,5 +121,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     public void UpdatePlayerPosition(Vector3 newPosition)
     {
         transform.position = newPosition;
+        if(this.OnUpdateScene!= null)
+            this.OnUpdateScene();
     }
 }
