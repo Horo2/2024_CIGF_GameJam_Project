@@ -71,7 +71,10 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log(other.name);
+        if(other.gameObject.tag == "PressureValves")
+        {
+            other.gameObject.GetComponent<PressureValves>().flag = !other.gameObject.GetComponent<PressureValves>().flag;
+        }
     }
 
     void FixedUpdate()

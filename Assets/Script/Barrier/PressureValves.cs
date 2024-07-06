@@ -6,7 +6,7 @@ using UnityEngine;
 public class PressureValves : MonoBehaviour
 {
     public HighPressureWater highWater;
-    public bool flag;
+    public bool flag { get; set; }
     public bool isOpen;
     // Start is called before the first frame update
     void Start()
@@ -27,24 +27,17 @@ public class PressureValves : MonoBehaviour
     }
     void Update()
     {
-        
-    }
-
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if(isOpen)
+        if (isOpen)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (flag)
             {
-                if (flag)
-                {
-                    highWater.SetWaterUp();
-                }
-                else
-                    highWater.SetWaterDown();
+                highWater.SetWaterUp();
             }
+            else
+                highWater.SetWaterDown();
         }
     }
+
 
     private void OnUpdateScene()
     {
