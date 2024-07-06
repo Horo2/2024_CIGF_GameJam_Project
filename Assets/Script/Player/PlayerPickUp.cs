@@ -59,7 +59,8 @@ public class PlayerPickUp : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 1.0f); // 定义一个圆形范围来检测附近的物体
         foreach (Collider2D collider in colliders)
         {
-            if (collider.CompareTag("InteractObject"))
+            Debug.Log("当前物体：" + collider.gameObject.name);
+            if (collider.CompareTag("InteractObject") && collider.gameObject.name != "Button")
             {
                 Debug.Log("拾起");
                 PickUpObject(collider.gameObject);

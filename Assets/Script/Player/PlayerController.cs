@@ -32,6 +32,8 @@ public class PlayerController : MonoSingleton<PlayerController>
     public LayerMask wallLayer; // 墙壁层
     public float wallCheckRadius = 0.1f; // 检测半径
     public Transform wallCheck; // 用于检测墙壁的发射点
+
+    public Vector2 SpawnPoint;
     private void Awake(){
         //将新输入系统实例化
         inputControl = new PlayerInputController();
@@ -42,6 +44,8 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private void Start()
     {
+        SpawnPoint = SceneLoader.Instance.GetSpawnPointPosition();
+        this.transform.position = SpawnPoint;
         pv = null;
         isDisable = true;
     }
@@ -183,7 +187,10 @@ public class PlayerController : MonoSingleton<PlayerController>
     //更新玩家位置
     public void UpdatePlayerPosition(Vector3 newPosition)
     {
-        transform.position = newPosition;
+        if (this.OnUpdateScene != null)
+            this.OnUpdateScene();
+
+        this.transform.position = newPosition;
         isDisable = true;
         PlayerPickUp.OnSceneRefresh();
         // 删除 HoldPosition 下的所有子对象（Transform）
@@ -191,8 +198,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         {
             Destroy(child.gameObject);
         }
-        if (this.OnUpdateScene != null)
-            this.OnUpdateScene();
+
     }
 
     public void Restrat()

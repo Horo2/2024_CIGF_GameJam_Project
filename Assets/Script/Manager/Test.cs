@@ -8,7 +8,7 @@ public class Test : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            SceneLoader.Instance.LoadScene("SampleScene");
+            PlayerController.Instance.Restrat();
         }
 
         if (Input.GetKeyDown(KeyCode.K))

@@ -56,6 +56,7 @@ public class SceneLoader : MonoSingleton<SceneLoader>
         GameObject spawnPoint = GameObject.Find("SpawnPoint");
         if (spawnPoint != null)
         {
+            Debug.Log("SpwanPoint Position: " + spawnPoint.transform.position);
             return spawnPoint.transform.position;
         }
         return Vector2.zero;
