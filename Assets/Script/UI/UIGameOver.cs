@@ -20,8 +20,7 @@ public class UIGameOver : UIWindow
     // ���¿�ʼ��Ϸ
     public void OnClickRestart()
     {
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneLoader.Instance.LoadScene(currentScene.name);
+        PlayerController.Instance.Restrat();
         this.Close();
     }
 

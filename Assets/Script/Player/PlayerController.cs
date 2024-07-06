@@ -124,4 +124,10 @@ public class PlayerController : MonoSingleton<PlayerController>
         if(this.OnUpdateScene!= null)
             this.OnUpdateScene();
     }
+
+    public void Restrat()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneLoader.Instance.LoadScene(currentScene.name);
+    }
 }
