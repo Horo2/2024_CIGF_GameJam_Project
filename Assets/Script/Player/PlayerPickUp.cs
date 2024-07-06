@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPickUp : MonoBehaviour
+public class PlayerPickUp : MonoSingleton<PlayerPickUp>
 {
     public Transform holdPosition;
 

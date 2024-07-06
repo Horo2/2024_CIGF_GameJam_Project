@@ -1955,6 +1955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c4b955752494b8099072fa02879634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  global: 1
   holdPosition: {fileID: 1848711655}
   pickedUpObject: {fileID: 0}
 --- !u!1 &1848711654
@@ -2451,14 +2452,6 @@ PrefabInstance:
     - target: {fileID: 3235460513222065953, guid: a4135b8d6fe47d84b93c2b49ee07075e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7095940675748907696, guid: a4135b8d6fe47d84b93c2b49ee07075e, type: 3}
-      propertyPath: m_Size.y
-      value: 1.1398768
-      objectReference: {fileID: 0}
-    - target: {fileID: 7095940675748907696, guid: a4135b8d6fe47d84b93c2b49ee07075e, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.06993842
       objectReference: {fileID: 0}
     - target: {fileID: 8061528582564989812, guid: a4135b8d6fe47d84b93c2b49ee07075e, type: 3}
       propertyPath: m_Name

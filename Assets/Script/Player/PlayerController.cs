@@ -22,6 +22,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     private int jumpCount = 2;
 
     private bool doubleJump;
+    private bool isDisable;
     public UnityAction OnStateSwitching;
     public UnityAction OnUpdateScene;
 
@@ -36,6 +37,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private void Start()
     {
+        isDisable = true;
         if (this.OnStateSwitching != null)
             this.OnStateSwitching();
     }
@@ -43,11 +45,18 @@ public class PlayerController : MonoSingleton<PlayerController>
     //启动输入系统
     private void OnEnable()
     {
+        this.OnStateSwitching += OnState;
         inputControl.Enable();
     }
     //关闭输入系统
     private void OnDisable(){
+        this.OnStateSwitching -= OnState;
         inputControl.Disable();
+    }
+
+    private void OnState()
+    {
+        isDisable = !isDisable;
     }
 
     private void Update(){
@@ -69,6 +78,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         //检测人物移动
         Move();
+        IsPickUp();
     }
 
   
@@ -136,5 +146,13 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         Scene currentScene = SceneManager.GetActiveScene();
         SceneLoader.Instance.LoadScene(currentScene.name);
+    }
+
+    private void IsPickUp()
+    {
+        if(isDisable)
+            this.GetComponent<PlayerPickUp>().enabled = true;
+        else
+            this.GetComponent<PlayerPickUp>().enabled = false;
     }
 }
