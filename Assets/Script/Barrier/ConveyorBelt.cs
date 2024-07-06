@@ -8,10 +8,20 @@ public class ConveyorBelt : MonoBehaviour
     public bool isOpen;
     public CapsuleCollider2D capsuleCollider;
     public Rigidbody2D rb;
-    //´«ËÍ´ø·½Ïò£¬0Îª×ó£¬1ÎªÓÒ
+    //ï¿½ï¿½ï¿½Í´ï¿½ï¿½ï¿½ï¿½ï¿½0Îªï¿½ï¿½1Îªï¿½ï¿½
     public int horizontal;
-    //´«ËÍ´øËÙ¶È
+    //ï¿½ï¿½ï¿½Í´ï¿½ï¿½Ù¶ï¿½
     public float moveSpeed;
+
+
+    public Animator anim;
+
+    // Time between frames
+    public float frameRate = 0.1f;
+    private float timer;
+    private int currentFrame;
+
+
     void Start()
     {
         isOpen = true;
@@ -40,10 +50,10 @@ public class ConveyorBelt : MonoBehaviour
         isOpen = !isOpen;
     }
 
-    // µ±Ê±¼äÍ£Ö¹Ê±ºò£¬ÈËÎï/ÎïÌåÔÚÉÏÃæ²»»áÒÆ¶¯¡£µ±Ê±¼äÁ÷¶¯Ê±£¬ÎïÌåÔÚÉÏÃæ»áÍùÒ»¸ö·½ÏòÒÆ¶¯¡£
+    // ï¿½ï¿½Ê±ï¿½ï¿½Í£Ö¹Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ²»ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½
     void Update()
     {
-        
+        anim.Play("ConveyorBelt");
     }
 
     private void OnTriggerStay2D(Collider2D collision)
