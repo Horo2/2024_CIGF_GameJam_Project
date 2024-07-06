@@ -18,7 +18,7 @@ public class Shells : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         // 在碰撞位置生成爆炸特效
-        //Instantiate(explosionEffect, transform.position, transform.rotation);
+        Instantiate(explosionEffect, transform.position, transform.rotation);
 
         // 销毁炮弹
         Destroy(gameObject);
