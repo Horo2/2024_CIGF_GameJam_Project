@@ -472,7 +472,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &9003005286548475983
 MonoBehaviour:
@@ -532,6 +532,7 @@ MonoBehaviour:
   currentEnergy: 0
   decreaseRate: 0.5
   addEnergy: 3
+  EnergyBarAll: {fileID: 2541666172453463886}
   EnergyBarText: {fileID: 5420095498265884089}
   EnergyBarUI: {fileID: 4484420351688511826}
 --- !u!1 &7621747023395758214

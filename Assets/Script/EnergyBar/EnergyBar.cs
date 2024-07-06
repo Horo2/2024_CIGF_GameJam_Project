@@ -44,7 +44,7 @@ public class EnergyBar : MonoSingleton<EnergyBar>
         checkIfMainMenu();
         isDisabled = PlayerController.GetisDisable();
         //检测能量槽是否降低
-        Debug.Log("isDisabled" + isDisabled);
+        //Debug.Log("isDisabled" + isDisabled);
         if (!isDisabled)
         {
             RunDecrease();
@@ -66,7 +66,7 @@ public class EnergyBar : MonoSingleton<EnergyBar>
         //测试功能
         EnergyBarText.text = $"{currentEnergy.ToString("F1")}/{fullEnergy.ToString("F1")}";
         UpdateEnergyBarUI();
-        Debug.Log("CurrentEnergy" + currentEnergy);
+        //Debug.Log("CurrentEnergy" + currentEnergy);
     }
 
     //能量槽减少
@@ -86,9 +86,11 @@ public class EnergyBar : MonoSingleton<EnergyBar>
     // 更新UI
     public void UpdateEnergyBarUI()
     {
-        float sliderTimerValue = currentEnergy/fullEnergy;
-
-        EnergyBarUI.value = sliderTimerValue;
+        if (EnergyBarUI != null)
+        {
+            float sliderTimerValue = currentEnergy / fullEnergy;
+            EnergyBarUI.value = sliderTimerValue;
+        }
     }
 
     //暂停游戏
@@ -113,9 +115,19 @@ public class EnergyBar : MonoSingleton<EnergyBar>
         Debug.Log("currentScene : " + currentScene.name);
         if (currentScene.name == "Menu")
         {
-            EnergyBarAll.SetActive(false);
+            if (EnergyBarAll != null)
+            {
+                Debug.Log("Disabling EnergyBarAll");
+                EnergyBarAll.SetActive(false);
+            }
         }
-        EnergyBarAll.SetActive(true);
+        else
+        {
+            EnergyBarAll.SetActive(true);
+
+        }
+            
+        
     }
 
 }
