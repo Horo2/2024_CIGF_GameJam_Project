@@ -108,7 +108,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 4
+  m_GravityScale: 6.8
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -172,7 +172,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2733294462182605401}
   Rb: {fileID: 5086717917431227210}
   inputDirection: {x: 0, y: 0}
-  Speed: 3
+  Speed: 5
   jumpForce: 15
   gravity: 0
   isDisable: 0
