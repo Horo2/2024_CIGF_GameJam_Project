@@ -44,8 +44,6 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         pv = null;
         isDisable = true;
-        if (this.OnStateSwitching != null)
-            this.OnStateSwitching();
     }
 
     //启动输入系统
