@@ -8,6 +8,7 @@ public class PressureValves : MonoBehaviour
     public HighPressureWater highWater;
     public bool flag { get; set; }
     public bool isOpen;
+    public bool dic;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,10 +32,18 @@ public class PressureValves : MonoBehaviour
         {
             if (flag)
             {
-                highWater.SetWaterUp();
+                if(dic)
+                {
+                    highWater.SetWaterUp();
+                    dic = !dic;
+                }
+                else
+                {
+                    highWater.SetWaterDown();
+                    dic = !dic;
+                }
+                    
             }
-            else
-                highWater.SetWaterDown();
         }
     }
 

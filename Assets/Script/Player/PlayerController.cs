@@ -73,7 +73,14 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         if(other.gameObject.tag == "PressureValves")
         {
-            other.gameObject.GetComponent<PressureValves>().flag = !other.gameObject.GetComponent<PressureValves>().flag;
+            if(Input.GetKeyDown(KeyCode.F))
+            {
+                other.gameObject.GetComponent<PressureValves>().flag = true;
+            }
+            if (Input.GetKeyUp(KeyCode.F))
+            {
+                other.gameObject.GetComponent<PressureValves>().flag = false;
+            }
         }
     }
 
