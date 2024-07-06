@@ -2,42 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LauncherController : MonoBehaviour
+public class BoxGenetor : MonoBehaviour
 {
-    public GameObject shellPrefab; // 炮弹预制体
+
+    public GameObject BoxPrefab; // 炮弹预制体
     public GameObject muzzleFlashPrefab; // 发射特效预制体
     public Transform firePoint; // 发射点
     public float fireRate = 2f; // 发射间隔时间
 
     private bool isFiring = false; // 记录当前是否在发射
-    private Coroutine fireCoroutine;
-
-
+    private Coroutine GenetorCoroutine;
     void Update()
     {
         if (PlayerController.GetisDisable() == false)
         {
+            Debug.Log("不可发射");
             if (!isFiring)
             {
-              // 恢复发射
-                fireCoroutine = StartCoroutine(FireShells());
+                // 恢复发射
+                GenetorCoroutine = StartCoroutine(GenetorBox());
                 isFiring = true;
+                // 暂停发射
+                
             }
         }
         else
         {
+            Debug.Log("可发射");
             if (isFiring)
             {
-
-                // 暂停发射
-                StopCoroutine(fireCoroutine);
+                StopCoroutine(GenetorCoroutine);
                 isFiring = false;
+
             }
-            
+
         }
     }
 
-    private IEnumerator FireShells()
+    private IEnumerator GenetorBox()
     {
         while (true)
         {
@@ -45,7 +47,7 @@ public class LauncherController : MonoBehaviour
             yield return new WaitForSeconds(fireRate);
 
             // 生成发射特效
-            if(muzzleFlashPrefab!= null)
+            if (muzzleFlashPrefab != null)
             {
                 Instantiate(muzzleFlashPrefab, firePoint.position, firePoint.rotation);
             }
@@ -53,9 +55,9 @@ public class LauncherController : MonoBehaviour
             {
                 Debug.LogWarning("Does not have Muzzle Flash Prefab on Launcher");
             }
-           
+
             // 生成炮弹
-            Instantiate(shellPrefab, firePoint.position, firePoint.rotation);
+            Instantiate(BoxPrefab, firePoint.position, firePoint.rotation);
         }
     }
 }
