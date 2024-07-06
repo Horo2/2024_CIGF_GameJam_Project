@@ -7,6 +7,7 @@ public class Water : MonoBehaviour
 {
     public bool isOpen;
     public BoxCollider2D waterCollider;
+    public CapsuleCollider2D waterDieCollider;
     // Start is called before the first frame update
     void Start()
     {

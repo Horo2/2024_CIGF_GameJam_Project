@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2952656967244662573}
   - component: {fileID: 2141922124701228986}
   - component: {fileID: 1463026725308956805}
+  - component: {fileID: 4503620937191227370}
   m_Layer: 3
   m_Name: water
   m_TagString: Untagged
@@ -192,3 +193,38 @@ MonoBehaviour:
   verticalDirection: 1
   moveTime: 3
   isImpaired: 0
+--- !u!70 &4503620937191227370
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311587157398720495}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0038872794, y: -0.0040874756}
+  m_Size: {x: 0.7745109, y: 0.8937254}
+  m_Direction: 0
