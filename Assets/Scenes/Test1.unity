@@ -509,7 +509,7 @@ GameObject:
   - component: {fileID: 2086059271}
   - component: {fileID: 2086059270}
   - component: {fileID: 2086059269}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: IteractObject
   m_TagString: InteractObject
   m_Icon: {fileID: 0}

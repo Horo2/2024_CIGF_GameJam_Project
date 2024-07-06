@@ -10,6 +10,9 @@ public class PlayerPickUp : MonoBehaviour
 
     private static List<GameObject> pickedUpObjects = new List<GameObject>();
 
+    public float throwForce = 8f; // 调整这个值来控制投掷力度
+    public float upwardForce = 2f; // 调整这个值来控制向上的力
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
@@ -26,6 +29,11 @@ public class PlayerPickUp : MonoBehaviour
             }
         }
 
+        // 检测鼠标左键点击并且当前有捡起的物体
+        if (Input.GetMouseButtonDown(0) && pickedUpObject != null)
+        {
+            Throw();
+        }
 
         // 确保物体跟随 holdPosition
         if (pickedUpObject != null)
@@ -85,6 +93,30 @@ public class PlayerPickUp : MonoBehaviour
         rb.isKinematic = false;
 
         pickedUpObject = null;
+    }
+
+    // 抛物线扔出去
+    void Throw()
+    {
+        
+        if (pickedUpObject != null)
+        {
+            pickedUpObject.transform.SetParent(null);
+
+            Rigidbody2D rb = pickedUpObject.GetComponent<Rigidbody2D>();
+            rb.isKinematic = false;
+
+            // 获取玩家移动方向
+            Vector2 playerDirection = PlayerController.Instance.inputDirection;
+
+            // 计算投掷方向和力度，添加一个向上的力
+            Vector2 throwDirection = playerDirection.normalized + Vector2.up * upwardForce;
+            rb.AddForce(throwDirection * throwForce, ForceMode2D.Impulse);
+
+            pickedUpObject = null;
+            
+        }
+
     }
 
 

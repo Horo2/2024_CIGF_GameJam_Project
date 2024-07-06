@@ -17,7 +17,6 @@ public class Shells : MonoBehaviour
 
     private void Update()
     {
-        if()
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
