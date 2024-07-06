@@ -1567,6 +1567,17 @@ Transform:
   - {fileID: 1592657175}
   m_Father: {fileID: 1757193783}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &915215767 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7617049276138434975, guid: 9965b5d69b73b424b8c546f4ef5eb06b, type: 3}
+  m_PrefabInstance: {fileID: 6063908457614562154}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba5769829be997e4081fda283013381f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1053350555 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2822753535792862451, guid: a6d3921ff5d8f0b4caf1aab3a7193fcb, type: 3}
@@ -1915,9 +1926,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1513704097}
   - component: {fileID: 1513704096}
+  - component: {fileID: 1513704098}
+  - component: {fileID: 1513704099}
   m_Layer: 0
   m_Name: PressureValves
-  m_TagString: Untagged
+  m_TagString: PressureValves
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1989,6 +2002,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1513704098
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513704095}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &1513704099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513704095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5d9aea4284f4c74680bf6178e827ed3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  highWater: {fileID: 915215767}
 --- !u!1 &1592657174
 GameObject:
   m_ObjectHideFlags: 3
@@ -2407,6 +2468,8 @@ MonoBehaviour:
   inputDirection: {x: 0, y: 0}
   Speed: 3
   jumpForce: 15
+  isDisable: 0
+  pv: {fileID: 0}
   HoldPosition: {fileID: 1848711655}
 --- !u!114 &1757193786
 MonoBehaviour:
@@ -2439,9 +2502,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c4b955752494b8099072fa02879634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  global: 1
   holdPosition: {fileID: 1848711655}
   pickedUpObject: {fileID: 0}
+  throwForce: 8
+  upwardForce: 2
 --- !u!1 &1848711654
 GameObject:
   m_ObjectHideFlags: 0
@@ -2997,6 +3061,18 @@ PrefabInstance:
     - target: {fileID: 6422065352933559075, guid: 9965b5d69b73b424b8c546f4ef5eb06b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7617049276138434975, guid: 9965b5d69b73b424b8c546f4ef5eb06b, type: 3}
+      propertyPath: moveTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7617049276138434975, guid: 9965b5d69b73b424b8c546f4ef5eb06b, type: 3}
+      propertyPath: actualSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7617049276138434975, guid: 9965b5d69b73b424b8c546f4ef5eb06b, type: 3}
+      propertyPath: verticalDirection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

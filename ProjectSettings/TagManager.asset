@@ -6,6 +6,7 @@ TagManager:
   tags:
   - InteractObject
   - Door
+  - PressureValves
   layers:
   - Default
   - TransparentFX

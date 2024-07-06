@@ -37,7 +37,6 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private void Start()
     {
-        isDisable = false;
         pv = null;
         isDisable = true;
         if (this.OnStateSwitching != null)
@@ -70,7 +69,8 @@ public class PlayerController : MonoSingleton<PlayerController>
         inputControl.GamePlay.StateSwitching.started += StateSwitching;
         if (Input.GetKeyDown(KeyCode.G))
         {
-            pv.gameObject.GetComponent<PressureValves>().highWater.SetWater();
+            if(pv!= null)
+                pv.gameObject.GetComponent<PressureValves>().highWater.SetWater();
         }
 
     }
