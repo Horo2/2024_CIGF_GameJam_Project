@@ -25,7 +25,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     private bool isDisable;
     public UnityAction OnStateSwitching;
     public UnityAction OnUpdateScene;
-
+    public Collider2D pv;
     public Transform HoldPosition;
     private void Awake(){
         //将新输入系统实例化
@@ -37,6 +37,7 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     private void Start()
     {
+        pv = null;
         isDisable = true;
         if (this.OnStateSwitching != null)
             this.OnStateSwitching();
@@ -66,6 +67,10 @@ public class PlayerController : MonoSingleton<PlayerController>
         inputControl.GamePlay.Jump.started+= Jump;
         //读取输入系统中是否按下Q进行状态切换
         inputControl.GamePlay.StateSwitching.started += StateSwitching;
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            pv.gameObject.GetComponent<PressureValves>().highWater.SetWater();
+        }
 
     }
 
@@ -73,15 +78,13 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         if(other.gameObject.tag == "PressureValves")
         {
-            if(Input.GetKeyDown(KeyCode.F))
-            {
-                other.gameObject.GetComponent<PressureValves>().flag = true;
-            }
-            if (Input.GetKeyUp(KeyCode.F))
-            {
-                other.gameObject.GetComponent<PressureValves>().flag = false;
-            }
+            pv = other;
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        pv = null;
     }
 
     void FixedUpdate()

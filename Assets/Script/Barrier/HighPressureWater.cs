@@ -16,11 +16,15 @@ public class HighPressureWater : MonoBehaviour
     public float isImpaired;
     private int impairment = 1;
     private Rigidbody2D rb;
+    private bool flag;
+    private bool isRun;
+    private bool isOpen;
     private void Start()
     {
+        isOpen = true;
+        isRun = false;
+        flag = true;
         rb = GetComponent<Rigidbody2D>();
-        speed = actualSpeed;
-        isImpaired = moveTime;
     }
     private void OnEnable()
     {
@@ -54,21 +58,24 @@ public class HighPressureWater : MonoBehaviour
     }
     private void OnStateSwitching()
     {
-        if (speed == 0)
+        isOpen = !isOpen;
+        if (speed == 0&& isRun)
         {
             speed = actualSpeed;
             this.impairment = 1;
         }
-        else
+        else if(speed != 0 &&isRun)
         {
             speed = 0;
             this.impairment = 0;
         }
+
     }
     private void OnUpdateScene()
     {
         speed = 0;
         this.impairment = 0;
+        isOpen = false;
     }
 
     private void subtraction()
@@ -80,23 +87,35 @@ public class HighPressureWater : MonoBehaviour
         }
     }
     
+    public void SetWater()
+    {
+        if(isOpen)
+        {
+            isRun = true;
+            if (flag)
+            {
+                SetWaterUp();
+                flag = !flag;
+            }
+            else
+            {
+                SetWaterDown();
+                flag = !flag;
+            }
+        }
+    }
+
     public void SetWaterUp()
     {
         verticalDirection = 1;
-        if (isImpaired <= 0)
-        {
-            speed = actualSpeed;
-            isImpaired = moveTime;
-        }
+        speed = actualSpeed;
+        isImpaired = moveTime;
     }
 
     public void SetWaterDown()
     {
         verticalDirection = -1;
-        if (isImpaired <= 0)
-        {
-            speed = actualSpeed;
-            isImpaired = moveTime;
-        }
+        speed = actualSpeed;
+        isImpaired = moveTime;
     }
 }
