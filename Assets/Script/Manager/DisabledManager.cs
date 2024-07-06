@@ -1,37 +1,22 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DisabledManager : MonoBehaviour
 {
     public bool isDisabled;
-    // Start is called before the first frame update
+    private Dictionary<GameObject, (Vector2, float)> objectVelocities = new Dictionary<GameObject, (Vector2, float)>();
+
     void Start()
     {
         isDisabled = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         isDisabled = PlayerController.GetisDisable();
         OnInteractSwitching();
     }
 
-    /*
-    private void OnEnable()
-    {
-        PlayerController.Instance.OnStateSwitching += OnState;
-        PlayerController.Instance.OnStateSwitching += OnInteractSwitching;
-    }
-
-    private void OnDisable()
-    {
-        PlayerController.Instance.OnStateSwitching -= OnState;
-        PlayerController.Instance.OnStateSwitching -= OnInteractSwitching;
-    }
-    */
     private void OnInteractSwitching()
     {
         GameObject[] interactObjects = GameObject.FindGameObjectsWithTag("InteractObject");
@@ -44,23 +29,27 @@ public class DisabledManager : MonoBehaviour
                 {
                     if (isDisabled)
                     {
+                        if (!objectVelocities.ContainsKey(obj))
+                        {
+                            // Store the velocity and angular velocity before making the object static
+                            objectVelocities[obj] = (rb.velocity, rb.angularVelocity);
+                        }
                         rb.bodyType = RigidbodyType2D.Static; // 设置为静态物理对象
                     }
                     else
                     {
                         rb.bodyType = RigidbodyType2D.Dynamic; // 恢复为动态物理对象
+                        // Reapply the stored velocity and angular velocity
+                        if (objectVelocities.ContainsKey(obj))
+                        {
+                            var velocities = objectVelocities[obj];
+                            rb.velocity = velocities.Item1;
+                            rb.angularVelocity = velocities.Item2;
+                            objectVelocities.Remove(obj); // Optionally remove the entry after reapplying
+                        }
                     }
                 }
-                /*
-                Collider2D collider = obj.GetComponent<Collider2D>();
-                if (collider != null)
-                {
-                    collider.enabled = !isDisabled; // 切换碰撞体状态
-                }*/
             }
         }
     }
-
-
-
 }
