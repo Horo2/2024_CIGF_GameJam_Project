@@ -8,6 +8,8 @@ public class PlayerPickUp : MonoBehaviour
 
     public GameObject pickedUpObject;
 
+    private static List<GameObject> pickedUpObjects = new List<GameObject>();
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
@@ -70,6 +72,9 @@ public class PlayerPickUp : MonoBehaviour
         // 重置位置和旋转
         pickedUpObject.transform.localPosition = Vector3.zero;
         pickedUpObject.transform.localRotation = Quaternion.identity;
+
+        // 将拾起的物体添加到列表中
+        pickedUpObjects.Add(pickedUpObject);
     }
 
     void DropObject()
@@ -80,6 +85,17 @@ public class PlayerPickUp : MonoBehaviour
         rb.isKinematic = false;
 
         pickedUpObject = null;
+    }
+
+
+    // 场景刷新时调用此方法
+    public static void OnSceneRefresh()
+    {
+        foreach (var obj in pickedUpObjects)
+        {
+            Destroy(obj);
+        }
+        pickedUpObjects.Clear();
     }
 
 }
