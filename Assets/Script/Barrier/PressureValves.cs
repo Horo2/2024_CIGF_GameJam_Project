@@ -6,53 +6,55 @@ using UnityEngine;
 public class PressureValves : MonoBehaviour
 {
     public HighPressureWater highWater;
-    public bool flag;
-    public bool isOpen;
-    // Start is called before the first frame update
-    void Start()
-    {
-        isOpen = true;
-    }
+    //public bool flag { get; set; }
+    //public bool isOpen;
+    //public bool dic;
+    //// Start is called before the first frame update
+    //void Start()
+    //{
+    //    isOpen = true;
+    //}
 
-    private void OnEnable()
-    {
-        PlayerController.Instance.OnStateSwitching += OnStateSwitching;
-        PlayerController.Instance.OnUpdateScene += OnUpdateScene;
-    }
+    //private void OnEnable()
+    //{
+    //    PlayerController.Instance.OnStateSwitching += OnStateSwitching;
+    //    PlayerController.Instance.OnUpdateScene += OnUpdateScene;
+    //}
 
-    private void OnDisable()
-    {
-        PlayerController.Instance.OnStateSwitching -= OnStateSwitching;
-        PlayerController.Instance.OnUpdateScene -= OnUpdateScene;
-    }
-    void Update()
-    {
-        
-    }
+    //private void OnDisable()
+    //{
+    //    PlayerController.Instance.OnStateSwitching -= OnStateSwitching;
+    //    PlayerController.Instance.OnUpdateScene -= OnUpdateScene;
+    //}
+    //void Update()
+    //{
+    //    if (isOpen)
+    //    {
+    //        if (flag)
+    //        {
+    //            if(dic)
+    //            {
+    //                highWater.SetWaterUp();
+    //                dic = !dic;
+    //            }
+    //            else
+    //            {
+    //                highWater.SetWaterDown();
+    //                dic = !dic;
+    //            }
+                    
+    //        }
+    //    }
+    //}
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if(isOpen)
-        {
-            if (Input.GetKeyDown(KeyCode.F))
-            {
-                if (flag)
-                {
-                    highWater.SetWaterUp();
-                }
-                else
-                    highWater.SetWaterDown();
-            }
-        }
-    }
 
-    private void OnUpdateScene()
-    {
-        isOpen = false;
-    }
+    //private void OnUpdateScene()
+    //{
+    //    isOpen = false;
+    //}
 
-    private void OnStateSwitching()
-    {
-        isOpen = !isOpen;
-    }
+    //private void OnStateSwitching()
+    //{
+    //    isOpen = !isOpen;
+    //}
 }
