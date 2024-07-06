@@ -6,6 +6,8 @@ TagManager:
   tags:
   - InteractObject
   - MovingPlatform
+  - PressureValves
+  - Point
   layers:
   - Default
   - TransparentFX
