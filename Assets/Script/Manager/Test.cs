@@ -11,6 +11,11 @@ public class Test : MonoBehaviour
             SceneLoader.Instance.LoadScene("SampleScene");
         }
 
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            SceneLoader.Instance.LoadScene("Test1");
+        }
+
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

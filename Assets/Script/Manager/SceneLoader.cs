@@ -50,4 +50,14 @@ public class SceneLoader : MonoSingleton<SceneLoader>
             Debug.LogError("TransitionEffect not assigned.");
         }
     }
+
+    public Vector2 GetSpawnPointPosition()
+    {
+        GameObject spawnPoint = GameObject.Find("SpawnPoint");
+        if (spawnPoint != null)
+        {
+            return spawnPoint.transform.position;
+        }
+        return Vector2.zero;
+    }
 }

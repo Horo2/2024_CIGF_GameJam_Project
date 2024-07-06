@@ -5,6 +5,7 @@ using System.Runtime;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoSingleton<PlayerController>
 {
@@ -109,5 +110,9 @@ public class PlayerController : MonoSingleton<PlayerController>
             this.OnStateSwitching();
     }
 
-
+    //更新玩家位置
+    public void UpdatePlayerPosition(Vector3 newPosition)
+    {
+        transform.position = newPosition;
+    }
 }

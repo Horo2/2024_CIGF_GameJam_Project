@@ -17,11 +17,11 @@ public class UIGameOver : UIWindow
         
     }
 
-    // ÖØÐÂ¿ªÊ¼ÓÎÏ·
+    // ï¿½ï¿½ï¿½Â¿ï¿½Ê¼ï¿½ï¿½Ï·
     public void OnClickRestart()
     {
         Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+        SceneLoader.Instance.LoadScene(currentScene.name);
         this.Close();
     }
 
@@ -30,10 +30,10 @@ public class UIGameOver : UIWindow
 
     }
 
-    // ·µ»ØÖ÷²Ëµ¥
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½
     public void OnClickMainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneLoader.Instance.LoadScene("Menu");
         this.Close();
     }
 }

@@ -23,6 +23,10 @@ public class TransitionEffect : MonoSingleton<TransitionEffect>
         // Load the new scene asynchronously
         yield return StartCoroutine(SceneLoader.LoadNewSceneAsync(sceneName));
 
+        // spawn Player
+        Vector2 spawnPosition = SceneLoader.Instance.GetSpawnPointPosition();
+        PlayerController.Instance.UpdatePlayerPosition(spawnPosition);
+
         // Move the rectangle from center to right
         yield return StartCoroutine(MoveBlackScreen(onScreen, offScreenRight, transitionDuration));
     }
