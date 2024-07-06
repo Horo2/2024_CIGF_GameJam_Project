@@ -173,7 +173,7 @@ MonoBehaviour:
   Rb: {fileID: 5086717917431227210}
   inputDirection: {x: 0, y: 0}
   Speed: 5
-  jumpForce: 15
+  jumpForce: 20
   gravity: 0
   isDisable: 0
   pv: {fileID: 0}
