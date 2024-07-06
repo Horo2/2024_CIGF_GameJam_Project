@@ -6,7 +6,7 @@ public class PlayerPickUp : MonoBehaviour
 {
     public Transform holdPosition;
 
-    private GameObject pickedUpObject;
+    public GameObject pickedUpObject;
 
     void Update()
     {
@@ -42,16 +42,26 @@ public class PlayerPickUp : MonoBehaviour
 
     void PickUpObject(GameObject obj)
     {
+        Debug.Log("捡起物体：" + obj.name);
         pickedUpObject = obj;
-        pickedUpObject.GetComponent<Rigidbody2D>().isKinematic = true; // 设置为静态物理对象
+        Rigidbody2D rb = pickedUpObject.GetComponent<Rigidbody2D>();
+        rb.isKinematic = true;
+
+        // 重置位置和旋转
+        pickedUpObject.transform.position = holdPosition.position;
+        pickedUpObject.transform.rotation = holdPosition.rotation;
+
+        // 设置父级为 holdPosition
         pickedUpObject.transform.SetParent(holdPosition);
-        pickedUpObject.transform.localPosition = Vector3.zero; // 重置相对位置
     }
 
     void DropObject()
     {
         pickedUpObject.transform.SetParent(null);
-        pickedUpObject.GetComponent<Rigidbody2D>().isKinematic = false; // 恢复物理效果
+        // 恢复物理属性
+        Rigidbody2D rb = pickedUpObject.GetComponent<Rigidbody2D>();
+        rb.isKinematic = false;
+
         pickedUpObject = null;
     }
 

@@ -24,6 +24,8 @@ public class PlayerController : MonoSingleton<PlayerController>
     private bool doubleJump;
     public UnityAction OnStateSwitching;
     public UnityAction OnUpdateScene;
+
+    public Transform HoldPosition;
     private void Awake(){
         //将新输入系统实例化
         inputControl = new PlayerInputController();
@@ -121,7 +123,12 @@ public class PlayerController : MonoSingleton<PlayerController>
     public void UpdatePlayerPosition(Vector3 newPosition)
     {
         transform.position = newPosition;
-        if(this.OnUpdateScene!= null)
+        // 删除 HoldPosition 下的所有子对象（Transform）
+        foreach (Transform child in HoldPosition)
+        {
+            Destroy(child.gameObject);
+        }
+        if (this.OnUpdateScene != null)
             this.OnUpdateScene();
     }
 
