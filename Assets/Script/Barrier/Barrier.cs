@@ -20,8 +20,6 @@ public class Barrier : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        speed = actualSpeed;
-        isImpaired = moveTime;
     }
     private void OnEnable()
     {
@@ -72,7 +70,7 @@ public class Barrier : MonoBehaviour
     }
     private void OnStateSwitching()
     {
-        if (speed == 0)
+        if (!PlayerController.GetisDisable())
         {
             speed = actualSpeed;
             this.impairment = 1;
