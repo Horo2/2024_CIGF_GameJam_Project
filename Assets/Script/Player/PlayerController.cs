@@ -27,6 +27,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     public UnityAction OnUpdateScene;
     public Collider2D pv;
     public Transform HoldPosition;
+    public Animator anim;
 
     public LayerMask wallLayer; // 墙壁层
     public float wallCheckRadius = 0.1f; // 检测半径
@@ -81,8 +82,11 @@ public class PlayerController : MonoSingleton<PlayerController>
         if (!physicsCheck.isGround)
         {
             Rb.AddForce(Vector3.down * gravity * Time.deltaTime, ForceMode2D.Force);
+            anim.SetBool("Jump",true);
         }
-
+        else
+            anim.SetBool("Jump", false);
+        
 
     }
     private void OnTriggerStay2D(Collider2D other)
@@ -104,12 +108,21 @@ public class PlayerController : MonoSingleton<PlayerController>
     {
         //检测人物移动
         Move();
+        if(inputDirection.x!=0)
+        {
+            anim.SetBool("Run",true);
+        }
+        else
+            anim.SetBool("Run", false);
         IsPickUp();
     }
 
   
     //人物移动
     void Move(){
+        //通过rigidbody组件，来改变人物的线性速度
+        //Rb.velocity = new Vector2(inputDirection.x*Speed,Rb.velocity.y);
+        
         // 检查前方是否有墙壁，从玩家脚下发射圆形检测
         bool isTouchingWall = Physics2D.OverlapCircle(wallCheck.position, wallCheckRadius, wallLayer);
 
@@ -132,12 +145,12 @@ public class PlayerController : MonoSingleton<PlayerController>
         else
             faceDir=1;
         //通过刚体组件来进行人物翻转
-        // transform.localScale=new Vector3(faceDir,1,1);
+         transform.localScale=new Vector3(faceDir,1,1);
         //通过精灵组件来进行翻转
-        //if(faceDir==-1)
-        //    spriteRenderer.flipX=true;
+        //if (faceDir == -1)
+        //    spriteRenderer.flipX = true;
         //else
-        //    spriteRenderer.flipX=false;
+        //    spriteRenderer.flipX = false;
     }
     //人物跳跃
     private void Jump(InputAction.CallbackContext context)
@@ -147,6 +160,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         {
             // 重置二段跳状态
             doubleJump = true;
+            
             // 给刚体施加一个向上瞬时的力
             Rb.velocity = Vector2.up * jumpForce;
             Debug.Log("跳跃");
