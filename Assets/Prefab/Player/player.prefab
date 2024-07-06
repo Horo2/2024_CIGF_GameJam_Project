@@ -184,6 +184,7 @@ MonoBehaviour:
     m_Bits: 8
   wallCheckRadius: 0.65
   wallCheck: {fileID: 5423984253308659585}
+  SpawnPoint: {x: 0, y: 0}
 --- !u!114 &7880200156351366465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,7 +457,7 @@ Transform:
   m_GameObject: {fileID: 8578797242715201793}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.36, z: 0}
+  m_LocalPosition: {x: 0, y: 1.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
