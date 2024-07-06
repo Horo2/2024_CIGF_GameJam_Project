@@ -25,6 +25,7 @@ public class Door : MonoBehaviour
         if (collision.gameObject.name == "Key")
         {
             OpenDoor();
+            Destroy(collision.gameObject);
         }
     }
 
