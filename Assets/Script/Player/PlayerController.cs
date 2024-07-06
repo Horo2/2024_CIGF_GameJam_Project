@@ -28,7 +28,6 @@ public class PlayerController : MonoSingleton<PlayerController>
     public Collider2D pv;
     public Transform HoldPosition;
     public Animator anim;
-
     public LayerMask wallLayer; // 墙壁层
     public float wallCheckRadius = 0.1f; // 检测半径
     public Transform wallCheck; // 用于检测墙壁的发射点
@@ -48,6 +47,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         this.transform.position = SpawnPoint;
         pv = null;
         isDisable = true;
+        faceTo = 1;
     }
 
     //启动输入系统
@@ -144,15 +144,20 @@ public class PlayerController : MonoSingleton<PlayerController>
         //如果输入为负数朝向左边，反之朝向右边
         if(inputDirection.x<0)
             faceDir=-1;
-        else
+        else if(inputDirection.x > 0)
             faceDir=1;
+        else faceDir=0;
         //通过刚体组件来进行人物翻转
-         transform.localScale=new Vector3(faceDir,1,1);
+         //transform.localScale=new Vector3(faceDir,1,1);
         //通过精灵组件来进行翻转
-        //if (faceDir == -1)
-        //    spriteRenderer.flipX = true;
-        //else
-        //    spriteRenderer.flipX = false;
+        if(faceDir!= 0)
+        {
+            if (faceDir == -1)
+                spriteRenderer.flipX = true;
+            else
+                spriteRenderer.flipX = false;
+        }
+        
     }
     //人物跳跃
     private void Jump(InputAction.CallbackContext context)
