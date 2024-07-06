@@ -37,11 +37,11 @@ public class Water : MonoBehaviour
     {
         if(isOpen)
         {
-            waterCollider.enabled = false;
+            waterCollider.enabled = true;
         }
         else
         {
-            waterCollider.enabled = true;
+            waterCollider.enabled = false;
         }
     }
     //当时间停止时，有碰撞体积，玩家无法穿过。当时间流动时，没有碰撞体积，玩家可以穿过。
