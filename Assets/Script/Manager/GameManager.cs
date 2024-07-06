@@ -56,11 +56,7 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    // 返回主菜单
-    public void MainMenu()
-    {
-        SceneManager.LoadScene(0);
-    }
+    
 
 
 
