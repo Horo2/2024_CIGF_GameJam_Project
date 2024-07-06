@@ -81,7 +81,6 @@ public class PlayerController : MonoSingleton<PlayerController>
         if (!physicsCheck.isGround)
         {
             Rb.AddForce(Vector3.down * gravity * Time.deltaTime, ForceMode2D.Force);
-
         }
 
 
@@ -115,9 +114,14 @@ public class PlayerController : MonoSingleton<PlayerController>
         bool isTouchingWall = Physics2D.OverlapCircle(wallCheck.position, wallCheckRadius, wallLayer);
 
         // 通过rigidbody组件，来改变人物的线性速度
-        if (!isTouchingWall || physicsCheck.isGround)
+        if (physicsCheck.isGround || !isTouchingWall)
         {
             Rb.velocity = new Vector2(inputDirection.x * Speed, Rb.velocity.y);
+        }
+        else
+        {
+            // 确保在空中碰到墙壁时，只会受重力影响下落
+            Rb.velocity = new Vector2(0, Rb.velocity.y);
         }
 
         //定义一个变量来控制人物朝向
