@@ -17,14 +17,19 @@ public class Water : MonoBehaviour
     private void OnEnable()
     {
         PlayerController.Instance.OnStateSwitching += OnStateSwitching;
+        PlayerController.Instance.OnUpdateScene += OnUpdateScene;
     }
 
     private void OnDisable()
     {
         PlayerController.Instance.OnStateSwitching -= OnStateSwitching;
+        PlayerController.Instance.OnUpdateScene -= OnUpdateScene;
     }
 
-    
+    private void OnUpdateScene()
+    {
+        isOpen = true;
+    }
 
     // Update is called once per frame
     void Update()
