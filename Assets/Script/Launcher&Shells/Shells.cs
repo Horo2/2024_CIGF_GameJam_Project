@@ -22,12 +22,11 @@ public class Shells : MonoBehaviour
     {
         if(PlayerController.GetisDisable())
         {
-            this.transform.Translate(Vector3.right * sheelsSpeed * Time.deltaTime);
+            this.transform.Translate(Vector3.right * 0 * Time.deltaTime);
         }
         else
         {
-            this.transform.Translate(Vector3.right * 0 * Time.deltaTime);
-            
+            this.transform.Translate(Vector3.right * sheelsSpeed * Time.deltaTime);           
         }
 
         Vector2 rayOrigin = (Vector2)transform.position + offset;

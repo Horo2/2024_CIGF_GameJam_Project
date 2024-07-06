@@ -34,7 +34,7 @@ public class Water : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!PlayerController.GetisDisable())
+        if (PlayerController.GetisDisable())
             PlayerController.Instance.Restrat();
     }
 }

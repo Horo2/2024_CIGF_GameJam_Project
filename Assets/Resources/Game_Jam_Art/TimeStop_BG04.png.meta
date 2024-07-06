@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6c0111e207ace254b95599748c583320
+guid: 666545c4040eef542bd1fd2736fabcd3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -136,22 +136,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u8D27\u8F66_0"
+      name: TimeStop_BG04_0
       rect:
         serializedVersion: 2
-        x: 575
-        y: 83
-        width: 786
-        height: 412
+        x: 140
+        y: 412
+        width: 10
+        height: 6
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 998726cdaf8b9ba4d863f9096a596ec8
-      internalID: -1726733312
+      spriteID: cf81effc029339d468e1eafe9fdb423a
+      internalID: 390014667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TimeStop_BG04_1
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 298
+        width: 975
+        height: 374
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00d84a94314bb7f4685017fbd20f41c0
+      internalID: 989142160
       vertices: []
       indices: 
       edges: []
@@ -167,7 +188,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\u8D27\u8F66_0": -1726733312
+      TimeStop_BG04_0: 390014667
+      TimeStop_BG04_1: 989142160
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
