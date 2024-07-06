@@ -18,13 +18,15 @@ public class HighPressureWater : MonoBehaviour
     private Rigidbody2D rb;
     private bool flag;
     private bool isRun;
-    private bool isOpen;
+    private Animator animator;
+    private CircleCollider2D circleCollider;
     private void Start()
     {
-        isOpen = true;
         isRun = false;
         flag = true;
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        circleCollider = GetComponent<CircleCollider2D>();
     }
     private void OnEnable()
     {
@@ -55,19 +57,28 @@ public class HighPressureWater : MonoBehaviour
                     subtraction();
                 }
         }
+        if(PlayerController.GetisDisable())
+        {
+            animator.speed = 0;
+        }
+        else
+        {
+            animator.speed = 1;
+        }
     }
     private void OnStateSwitching()
     {
-        isOpen = !isOpen;
-        if (speed == 0&& isRun)
+        if (!PlayerController.GetisDisable() && isRun)
         {
             speed = actualSpeed;
             this.impairment = 1;
+            
         }
-        else if(speed != 0 &&isRun)
+        else if(PlayerController.GetisDisable() && isRun)
         {
             speed = 0;
             this.impairment = 0;
+            
         }
 
     }
@@ -75,7 +86,6 @@ public class HighPressureWater : MonoBehaviour
     {
         speed = 0;
         this.impairment = 0;
-        isOpen = false;
     }
 
     private void subtraction()
@@ -89,7 +99,7 @@ public class HighPressureWater : MonoBehaviour
     
     public void SetWater()
     {
-        if(isOpen)
+        if(!PlayerController.GetisDisable())
         {
             isRun = true;
             if (flag)
@@ -117,5 +127,11 @@ public class HighPressureWater : MonoBehaviour
         verticalDirection = -1;
         speed = actualSpeed;
         isImpaired = moveTime;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Point")
+            this.speed = 0;
     }
 }

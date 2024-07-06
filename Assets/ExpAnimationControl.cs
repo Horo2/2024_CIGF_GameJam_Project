@@ -17,11 +17,11 @@ public class ExpAnimationControl : MonoBehaviour
     {
         if (PlayerController.GetisDisable())
         {
-            animator.speed = 0; // 恢复动画
+            animator.speed = 0; // 暂停动画
         }
         else
         {
-            animator.speed = 1; // 暂停动画
+            animator.speed = 1; // 恢复动画
         }
     }
 
