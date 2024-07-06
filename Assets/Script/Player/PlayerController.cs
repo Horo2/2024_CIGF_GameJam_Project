@@ -180,6 +180,7 @@ public class PlayerController : MonoSingleton<PlayerController>
     }
     private void StateSwitching(InputAction.CallbackContext context)
     {
+        AudioManager.Instance.HandoffBGM();
         if (this.OnStateSwitching != null)
             this.OnStateSwitching();
     }
