@@ -19,14 +19,12 @@ public class HighPressureWater : MonoBehaviour
     private bool flag;
     private bool isRun;
     private Animator animator;
-    private CircleCollider2D circleCollider;
     private void Start()
     {
         isRun = false;
         flag = true;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        circleCollider = GetComponent<CircleCollider2D>();
     }
     private void OnEnable()
     {
