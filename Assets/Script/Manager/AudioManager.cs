@@ -7,8 +7,10 @@ public class AudioManager : MonoSingleton<AudioManager>
 
     public AudioSource bgmSource1;
     public AudioSource bgmSource2;
+    public AudioSource bgmSource3;
     public AudioClip bgmClip1;
     public AudioClip bgmClip2;
+    public AudioClip bgmClip3;
 
     public void Start()
     {
@@ -21,6 +23,8 @@ public class AudioManager : MonoSingleton<AudioManager>
 
     public void Update()
     {
+        PlayBGM(bgmSource1);
+        PlayBGM(bgmSource2);
     }
     public void PlayBGM(AudioSource audioSource)
     {
@@ -57,6 +61,10 @@ public class AudioManager : MonoSingleton<AudioManager>
         }
     }
 
+    public void PlayPalyerDie()
+    {
+        bgmSource3.PlayOneShot(bgmClip3,1);
+    }
     IEnumerator PlayBgm1()
     {
         // µ≠»Î
