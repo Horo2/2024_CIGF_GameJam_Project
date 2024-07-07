@@ -25,6 +25,10 @@ public class AudioManager : MonoSingleton<AudioManager>
     {
         PlayBGM(bgmSource1);
         PlayBGM(bgmSource2);
+        if(EnergyBar.Instance.currentEnergy <=0)
+        {
+            StartCoroutine(PlayBgm2());
+        }
     }
     public void PlayBGM(AudioSource audioSource)
     {
