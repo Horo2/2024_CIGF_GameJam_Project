@@ -921,14 +921,6 @@ PrefabInstance:
       value: Sewer
       objectReference: {fileID: 0}
     - target: {fileID: 2635191563234058799, guid: 05a14c4c548bb944a97c991bf7f15d33, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.0395958
-      objectReference: {fileID: 0}
-    - target: {fileID: 2635191563234058799, guid: 05a14c4c548bb944a97c991bf7f15d33, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.0485882
-      objectReference: {fileID: 0}
-    - target: {fileID: 2635191563234058799, guid: 05a14c4c548bb944a97c991bf7f15d33, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.69
       objectReference: {fileID: 0}
