@@ -87,7 +87,10 @@ public class PlayerController : MonoSingleton<PlayerController>
         }
         else
             anim.SetBool("Jump", false);
-        
+        if(EnergyBar.Instance.currentEnergy <=0)
+        {
+            this.isDisable = true;
+        }
 
     }
     private void OnTriggerStay2D(Collider2D other)
