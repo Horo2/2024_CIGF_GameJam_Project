@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         CloseGameOverPanel();
-        SceneLoader.Instance.LoadScene("SampleScene");
+        SceneLoader.Instance.LoadScene("Level_1");
     }
 
     // 退出游戏

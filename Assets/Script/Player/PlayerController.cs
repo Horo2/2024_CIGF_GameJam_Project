@@ -208,8 +208,13 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public void Restrat()
     {
+        isDisable = true;
         Scene currentScene = SceneManager.GetActiveScene();
         SceneLoader.Instance.LoadScene(currentScene.name);
+        float currentEnergyVolume = SceneLoader.currentEnergyVolume;
+        Debug.Log("记录当前能量：" + currentEnergyVolume);
+        EnergyBar.Instance.SetCurrentEnergy(currentEnergyVolume);
+
     }
 
     private void IsPickUp()

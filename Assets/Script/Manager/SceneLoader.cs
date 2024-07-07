@@ -8,6 +8,9 @@ public class SceneLoader : MonoSingleton<SceneLoader>
     public GameObject transitionEffectPrefab;
     private TransitionEffect transitionEffect;
 
+    // 记录当前能量条
+    public static float currentEnergyVolume;
+
     protected override void OnStart()
     {
         base.OnStart();
@@ -41,8 +44,13 @@ public class SceneLoader : MonoSingleton<SceneLoader>
 
     public void LoadScene(string sceneName)
     {
-        if (transitionEffect != null)
+       if (sceneName != SceneManager.GetActiveScene().name)
         {
+            currentEnergyVolume = EnergyBar.GetCurrentEnergy();
+        }
+        Debug.Log("记录当前能量：" + currentEnergyVolume);
+        if (transitionEffect != null)
+        { 
             StartCoroutine(transitionEffect.PlayTransition(sceneName));
         }
         else
