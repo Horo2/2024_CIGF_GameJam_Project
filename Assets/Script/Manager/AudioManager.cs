@@ -16,7 +16,7 @@ public class AudioManager : MonoSingleton<AudioManager>
     {
         bgmSource1.clip = bgmClip1;
         bgmSource2.clip = bgmClip2;
-        StartCoroutine(PlayBgm1());
+        StartCoroutine(PlayBgm2());
         PlayBGM(bgmSource1);
         PlayBGM(bgmSource2);
     }
@@ -25,6 +25,10 @@ public class AudioManager : MonoSingleton<AudioManager>
     {
         PlayBGM(bgmSource1);
         PlayBGM(bgmSource2);
+        if(EnergyBar.Instance.currentEnergy <=0)
+        {
+            StartCoroutine(PlayBgm2());
+        }
     }
     public void PlayBGM(AudioSource audioSource)
     {

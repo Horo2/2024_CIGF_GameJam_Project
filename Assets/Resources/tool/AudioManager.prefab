@@ -44,7 +44,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -172,7 +172,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -300,7 +300,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -434,5 +434,7 @@ MonoBehaviour:
   global: 1
   bgmSource1: {fileID: 4898746969021635623}
   bgmSource2: {fileID: 5500779664811727066}
+  bgmSource3: {fileID: 3491077839228015477}
   bgmClip1: {fileID: 8300000, guid: 4c89762f484103342b11889b27f6de2f, type: 3}
   bgmClip2: {fileID: 8300000, guid: a1129a0d28801dd489d05c6f3fd83202, type: 3}
+  bgmClip3: {fileID: 8300000, guid: 28d0d1500c769435b921ea0fb27bcb39, type: 3}
