@@ -184,9 +184,12 @@ public class PlayerController : MonoSingleton<PlayerController>
     }
     private void StateSwitching(InputAction.CallbackContext context)
     {
-        AudioManager.Instance.HandoffBGM();
-        if (this.OnStateSwitching != null)
-            this.OnStateSwitching();
+        if(EnergyBar.Instance.currentEnergy > 0)
+        {
+            AudioManager.Instance.HandoffBGM();
+            if (this.OnStateSwitching != null)
+                this.OnStateSwitching();
+        }
     }
 
     //更新玩家位置
