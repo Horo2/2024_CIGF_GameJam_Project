@@ -68,7 +68,7 @@ public class AudioManager : MonoSingleton<AudioManager>
     IEnumerator PlayBgm1()
     {
         // µ≠»Î
-        while (bgmSource1.volume < 1f)
+        while (bgmSource1.volume < 0.6f)
         {
             bgmSource1.volume += Time.deltaTime / 2f;
             bgmSource2.volume -= Time.deltaTime / 2f;
@@ -79,7 +79,7 @@ public class AudioManager : MonoSingleton<AudioManager>
     IEnumerator PlayBgm2()
     {
         // µ≠»Î
-        while (bgmSource2.volume < 1f)
+        while (bgmSource2.volume < 0.6f)
         {
             bgmSource1.volume -= Time.deltaTime / 2f;
             bgmSource2.volume += Time.deltaTime / 2f;
