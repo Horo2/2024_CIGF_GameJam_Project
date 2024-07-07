@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         CloseGameOverPanel();
+        EnergyBar.Instance.SetCurrentEnergy(10);
         SceneLoader.Instance.LoadScene("Level_1");
     }
 
