@@ -19,7 +19,6 @@ public class HighPressureWater : MonoBehaviour
     private bool flag;
     private bool isRun;
     private Animator animator;
-    private CircleCollider2D circleCollider;
     private void Start()
     {
         isRun = false;
