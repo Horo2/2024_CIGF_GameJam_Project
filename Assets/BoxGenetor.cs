@@ -16,7 +16,6 @@ public class BoxGenetor : MonoBehaviour
     {
         if (PlayerController.GetisDisable() == false)
         {
-            Debug.Log("不可发射");
             if (!isFiring)
             {
                 // 恢复发射
@@ -28,7 +27,6 @@ public class BoxGenetor : MonoBehaviour
         }
         else
         {
-            Debug.Log("可发射");
             if (isFiring)
             {
                 StopCoroutine(GenetorCoroutine);
