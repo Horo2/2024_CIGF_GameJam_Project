@@ -74,6 +74,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         inputControl.GamePlay.Jump.started += Jump;
         //读取输入系统中是否按下Q进行状态切换
         inputControl.GamePlay.StateSwitching.started += StateSwitching;
+        inputControl.GamePlay.Esc .started += ShowGameOver;
         if (Input.GetKeyDown(KeyCode.G))
         {
             if (pv != null)
@@ -93,6 +94,12 @@ public class PlayerController : MonoSingleton<PlayerController>
         }
 
     }
+
+    private void ShowGameOver(InputAction.CallbackContext context)
+    {
+        UIManager.Instance.Show<UIGameOver>();
+    }
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if(other.gameObject.tag == "PressureValves")
