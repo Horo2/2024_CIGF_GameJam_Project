@@ -33,7 +33,7 @@ public class OrdinaryWater : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!PlayerController.GetisDisable())
+        if (!PlayerController.GetisDisable() && collision.gameObject.CompareTag("Player") == true)
             PlayerController.Instance.Restrat();
     }
 }
