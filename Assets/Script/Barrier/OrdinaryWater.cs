@@ -38,7 +38,7 @@ public class OrdinaryWater : MonoBehaviour
     {
         if (!PlayerController.GetisDisable())
         {
-            if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "InteractObject")
+            if (collision.gameObject.tag == "Player" ||( collision.gameObject.tag == "InteractObject" && collision.gameObject.name != "Key"))
             {
                 transform.position = new Vector3(transform.position.x, y - offset, transform.position.z);
             }
@@ -53,7 +53,7 @@ public class OrdinaryWater : MonoBehaviour
     {
         if (!PlayerController.GetisDisable())
         {
-            if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "InteractObject")
+            if (collision.gameObject.tag == "Player" || (collision.gameObject.tag == "InteractObject" && collision.gameObject.name != "Key"))
             {
                 transform.position = new Vector3(transform.position.x, y, transform.position.z);
             }
