@@ -5017,18 +5017,6 @@ PrefabInstance:
       value: pool
       objectReference: {fileID: 0}
     - target: {fileID: 4164674183097969037, guid: bc58637c76dc3314b9a3784730e67b05, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.7038306
-      objectReference: {fileID: 0}
-    - target: {fileID: 4164674183097969037, guid: bc58637c76dc3314b9a3784730e67b05, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2.0624752
-      objectReference: {fileID: 0}
-    - target: {fileID: 4164674183097969037, guid: bc58637c76dc3314b9a3784730e67b05, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.7307
-      objectReference: {fileID: 0}
-    - target: {fileID: 4164674183097969037, guid: bc58637c76dc3314b9a3784730e67b05, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.58
       objectReference: {fileID: 0}
