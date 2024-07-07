@@ -36,6 +36,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Level_Defult.unity
     guid: 0716d62b096e87548a9120b98ec65de9
   - enabled: 1
-    path: Assets/Scenes/Levels/Level_X4.unity
+    path: Assets/Scenes/Levels/Level_4.unity
     guid: f2a91056ed2304367acf8d691f31cc3d
   m_configObjects: {}
