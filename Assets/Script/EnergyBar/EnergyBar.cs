@@ -22,6 +22,7 @@ public class EnergyBar : MonoSingleton<EnergyBar>
     //加的能量
     public float addEnergy;
 
+
     //测试UI
     [SerializeField] private GameObject EnergyBarAll;
     [SerializeField] private TMP_Text EnergyBarText;
