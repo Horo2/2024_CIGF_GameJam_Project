@@ -14,7 +14,7 @@ public class OrdinaryWater : MonoBehaviour
     {
         waterCollider = this.GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
-        y = transform.position.y;
+        y = this.transform.position.y;
     }
 
     // Update is called once per frame
@@ -40,11 +40,14 @@ public class OrdinaryWater : MonoBehaviour
         {
             if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "InteractObject")
             {
-                this.transform.position = new Vector3(transform.position.x, y - offset, transform.position.z);
+                transform.position = new Vector3(transform.position.x, y - offset, transform.position.z);
+            }
+            else
+            {
+                transform.position = new Vector3(transform.position.x, y, transform.position.z);
             }
         }
     }
-
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -52,10 +55,8 @@ public class OrdinaryWater : MonoBehaviour
         {
             if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "InteractObject")
             {
-                this.transform.position = new Vector3(transform.position.x, y, transform.position.z);
+                transform.position = new Vector3(transform.position.x, y, transform.position.z);
             }
         }
     }
-
-
 }

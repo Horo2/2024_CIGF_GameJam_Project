@@ -38,11 +38,14 @@ public class EnergyBar : MonoSingleton<EnergyBar>
         checkIfMainMenu();
     }
 
+    
+
     // Update is called once per frame
     void Update()
     {
         checkIfMainMenu();
         isDisabled = PlayerController.GetisDisable();
+        Debug.Log("暂停：" + isDisabled);
         //检测能量槽是否降低
         //Debug.Log("isDisabled" + isDisabled);
         if (!isDisabled)
@@ -129,6 +132,20 @@ public class EnergyBar : MonoSingleton<EnergyBar>
         }
             
         
+    }
+
+
+    public static float GetCurrentEnergy()
+    {
+        return EnergyBar.Instance.currentEnergy;
+    }
+
+    public void SetCurrentEnergy(float currentEnergyVolume)
+    {
+        //重设
+        Debug.Log("触发重制" + currentEnergyVolume);
+        currentEnergy = currentEnergyVolume;
+            
     }
 
 }

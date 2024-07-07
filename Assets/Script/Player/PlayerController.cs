@@ -74,8 +74,7 @@ public class PlayerController : MonoSingleton<PlayerController>
         inputControl.GamePlay.Jump.started += Jump;
         //读取输入系统中是否按下Q进行状态切换
         inputControl.GamePlay.StateSwitching.started += StateSwitching;
-        //读取输入系统中是否按下Esc显示GameOver
-        inputControl.GamePlay.Esc.started += ShowGameOver;
+        inputControl.GamePlay.Esc .started += ShowGameOver;
         if (Input.GetKeyDown(KeyCode.G))
         {
             if (pv != null)
@@ -89,7 +88,10 @@ public class PlayerController : MonoSingleton<PlayerController>
         }
         else
             anim.SetBool("Jump", false);
-        
+        if(EnergyBar.Instance.currentEnergy <=0)
+        {
+            this.isDisable = true;
+        }
 
     }
 
@@ -192,9 +194,12 @@ public class PlayerController : MonoSingleton<PlayerController>
     }
     private void StateSwitching(InputAction.CallbackContext context)
     {
-        AudioManager.Instance.HandoffBGM();
-        if (this.OnStateSwitching != null)
-            this.OnStateSwitching();
+        if(EnergyBar.Instance.currentEnergy > 0)
+        {
+            AudioManager.Instance.HandoffBGM();
+            if (this.OnStateSwitching != null)
+                this.OnStateSwitching();
+        }
     }
 
     //更新玩家位置
@@ -216,8 +221,13 @@ public class PlayerController : MonoSingleton<PlayerController>
 
     public void Restrat()
     {
+        isDisable = true;
         Scene currentScene = SceneManager.GetActiveScene();
         SceneLoader.Instance.LoadScene(currentScene.name);
+        float currentEnergyVolume = SceneLoader.currentEnergyVolume;
+        Debug.Log("记录当前能量：" + currentEnergyVolume);
+        EnergyBar.Instance.SetCurrentEnergy(currentEnergyVolume);
+
     }
 
     private void IsPickUp()

@@ -92,7 +92,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2817117297106792748
 RectTransform:
   m_ObjectHideFlags: 0
@@ -529,7 +529,7 @@ MonoBehaviour:
   global: 1
   isDisabled: 0
   fullEnergy: 10
-  currentEnergy: 0
+  currentEnergy: 10
   decreaseRate: 0.5
   addEnergy: 3
   EnergyBarAll: {fileID: 2541666172453463886}

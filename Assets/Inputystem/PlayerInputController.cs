@@ -57,7 +57,7 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
                 {
                     ""name"": ""Esc"",
                     ""type"": ""Button"",
-                    ""id"": ""eba5bdae-8756-4777-9e99-c766fffe8f25"",
+                    ""id"": ""4f92dbe4-f676-4349-9843-0edec8ee9802"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -221,7 +221,7 @@ public partial class @PlayerInputController: IInputActionCollection2, IDisposabl
                 },
                 {
                     ""name"": """",
-                    ""id"": ""7651847f-df18-471b-8b65-98b77b3d0a02"",
+                    ""id"": ""0e7631bf-d70a-4b64-849b-7a708fe7f718"",
                     ""path"": ""<Keyboard>/Escape"",
                     ""interactions"": """",
                     ""processors"": """",

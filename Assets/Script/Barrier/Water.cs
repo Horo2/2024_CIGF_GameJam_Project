@@ -32,9 +32,9 @@ public class Water : MonoBehaviour
     //当时间停止时，有碰撞体积，玩家无法穿过。当时间流动时，没有碰撞体积，玩家可以穿过。
     //如果玩家在水里停止时间，则直接死亡。
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (PlayerController.GetisDisable() )
-    //        PlayerController.Instance.Restrat();
-    //}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (PlayerController.GetisDisable())
+            PlayerController.Instance.Restrat();
+    }
 }
