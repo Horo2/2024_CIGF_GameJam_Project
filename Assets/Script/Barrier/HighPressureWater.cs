@@ -25,7 +25,6 @@ public class HighPressureWater : MonoBehaviour
         flag = true;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        circleCollider = GetComponent<CircleCollider2D>();
     }
     private void OnEnable()
     {
