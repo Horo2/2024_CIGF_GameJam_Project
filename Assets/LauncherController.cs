@@ -7,6 +7,7 @@ public class LauncherController : MonoBehaviour
     public GameObject shellPrefab; // 炮弹预制体
     public GameObject muzzleFlashPrefab; // 发射特效预制体
     public Transform firePoint; // 发射点
+    public Transform muzzleFlashGenetorPoint;
     public float fireRate = 2f; // 发射间隔时间
 
     private bool isFiring = false; // 记录当前是否在发射
