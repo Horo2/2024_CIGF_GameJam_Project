@@ -5,8 +5,8 @@ public class TransitionEffect : MonoSingleton<TransitionEffect>
 {
     public RectTransform transitionRect;
     public float transitionDuration = 1.0f;
-    private Vector3 offScreenLeft = new Vector3(-1746, 0, 0);
-    private Vector3 offScreenRight = new Vector3(1750, 0, 0);
+    private Vector3 offScreenLeft = new Vector3(-2000, 0, 0);
+    private Vector3 offScreenRight = new Vector3(2000, 0, 0);
     private Vector3 onScreen = Vector3.zero;
 
     protected override void OnStart()
