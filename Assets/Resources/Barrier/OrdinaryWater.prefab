@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5841016421859919819}
   - component: {fileID: 1805583607480727243}
-  - component: {fileID: 6548949942417361106}
   - component: {fileID: 6146309946523601892}
   - component: {fileID: 6590395862150188560}
   - component: {fileID: 1050657974135216018}
+  - component: {fileID: 3485669402340682634}
   m_Layer: 0
   m_Name: OrdinaryWater
   m_TagString: Untagged
@@ -89,27 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &6548949942417361106
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1982503488808561393}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c0aaa878a90b3594988051595c82d2ed, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!61 &6146309946523601892
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -196,6 +175,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waterCollider: {fileID: 6146309946523601892}
   waterTrigger: {fileID: 8256055148626657841}
+  offset: 5
+  y: 0
+--- !u!95 &3485669402340682634
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982503488808561393}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c0aaa878a90b3594988051595c82d2ed, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3073178081559004398
 GameObject:
   m_ObjectHideFlags: 0
