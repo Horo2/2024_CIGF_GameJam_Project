@@ -4,12 +4,14 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoSingleton<SceneLoader>
 {
-    //预制件，自动实例化
+    // 预制件，自动实例化
     public GameObject transitionEffectPrefab;
     private TransitionEffect transitionEffect;
 
     // 记录当前能量条
     public static float currentEnergyVolume;
+
+    private Coroutine currentCoroutine; // 用于保存当前协程的引用
 
     protected override void OnStart()
     {
@@ -18,7 +20,7 @@ public class SceneLoader : MonoSingleton<SceneLoader>
         InitializeTransitionEffect();
     }
 
-    //自动实例化
+    // 自动实例化
     private void InitializeTransitionEffect()
     {
         transitionEffect = FindObjectOfType<TransitionEffect>();
@@ -44,14 +46,22 @@ public class SceneLoader : MonoSingleton<SceneLoader>
 
     public void LoadScene(string sceneName)
     {
-       if (sceneName != SceneManager.GetActiveScene().name)
+        if (sceneName != SceneManager.GetActiveScene().name)
         {
             currentEnergyVolume = EnergyBar.GetCurrentEnergy();
         }
         Debug.Log("记录当前能量：" + currentEnergyVolume);
+
+        // 在加载新场景之前停止当前协程（如果有）
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
+
         if (transitionEffect != null)
-        { 
-            StartCoroutine(transitionEffect.PlayTransition(sceneName));
+        {
+            // 启动新的协程，并保存对它的引用
+            currentCoroutine = StartCoroutine(transitionEffect.PlayTransition(sceneName));
         }
         else
         {
